@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   post "/login", to: 'sessions#create'
-  post "/signup", to: 'users#create' 
+  get "logout", to: 'sessions#destroy'
+  post "/signup", to: 'users#create'
+  get '/currentUser', to: 'sessions#auth'
+
   # Defines the root path route ("/")
   # root "articles#index"
 end

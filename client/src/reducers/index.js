@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux'
-import currentUserReducer from './currentUserSlice'
+import sessionsReducer from './sessionsReducer'
+import groupsReducer from "./groupsReducer"
 
 export default combineReducers({
-    currentUser: currentUserReducer
+    session: sessionsReducer,
+    groups: groupsReducer
 })

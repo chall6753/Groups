@@ -15,8 +15,8 @@ class GroupsController < ApplicationController
 
   # POST /groups
   def create
-    @group = Group.new(group_params)
-
+    @group = current_user.created_groups.new(group_params)
+    
     if @group.save
       render json: @group, status: :created, location: @group
     else
@@ -46,6 +46,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:user_id, :name, :start_date, :end_date, :location, :description)
+      params.permit(:name, :start_date, :end_date, :location, :description)
     end
 end

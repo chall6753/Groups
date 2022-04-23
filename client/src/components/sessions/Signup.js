@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -11,6 +12,8 @@ function Signup(){
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [email, setEmail] = useState('')
+
+    const navigate = useNavigate()
 
     const dispatch =  useDispatch()
     const currentUser = useSelector(state => state.currentUser)
@@ -35,6 +38,7 @@ function Signup(){
             if (res.ok){
                 console.log('success')
                 res.json().then(user => dispatch({type: "login", payload: user}))
+                navigate('/')
             }
             else {console.log('error')}
         })

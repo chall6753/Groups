@@ -13,7 +13,8 @@ function NavbarSide({currentUser}){
                         <NavLink className='sidenavLink' to='/'>Home</NavLink>       
                         <NavLink className='sidenavLink' to="/signup" exact="true">Signup</NavLink>
                         <NavLink className='sidenavLink' to="/login" exact="true">Login</NavLink>
-                        
+                        <NavLink className='sidenavLink' to="/create_group" exact="true">Create Group</NavLink>
+                        <NavLink className='sidenavLink' to="/group_list" exact="true">Groups</NavLink>
                         </ul>
                     </Nav> 
                 </Navbar>

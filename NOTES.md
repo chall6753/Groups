@@ -7,3 +7,15 @@
 - created signup and login on backend
 - added sessions and cookies
 - create react app "client" within rails app 
+- login in and sign up done on front end
+- redux working for login and sign up
+- start groups reducer and Create Group page
+
+4/22
+
+- nothing
+
+4/23
+- added logout button component 
+- added current user action that is dispatched in App component to keep person logged in
+-
