@@ -34,7 +34,8 @@ export const showYourGroups = ()=> {
           res.json().then(groups => dispatch({type: 'showYourGroups', payload: groups}))
         }
         else{
-          console.log("error")
+          console.log("not logged in")
+          res.json().then(groups => dispatch({type: 'showYourGroups', payload: initialState}))
         }
       })
     }
@@ -51,6 +52,7 @@ export default function groupsReducer(state = initialState, action) {
         return [...state, action.payload]
       case "showYourGroups":
         console.log('showyourgroups')
+        console.log(action.payload)
         return action.payload
       default:
         return state;

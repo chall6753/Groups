@@ -18,4 +18,8 @@
 4/23
 - added logout button component 
 - added current user action that is dispatched in App component to keep person logged in
--
+- added homenotloggedin component
+- worked on css for home page 
+
+4/24 
+- 

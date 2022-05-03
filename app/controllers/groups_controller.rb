@@ -3,13 +3,15 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    @groups = Group.all
-
-    render json: @groups
+    if current_user
+      render json: current_user.created_groups
+    else render json: {error: 'not logged in'}
+    end
   end
 
   # GET /groups/1
   def show
+    byebug
     render json: @group
   end
 

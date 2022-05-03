@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+import {Container, Form, Button} from 'react-bootstrap'
 
 
 
@@ -45,9 +46,47 @@ function Signup(){
     }
 
     return (
-        <div>
-            <h1>Signup</h1>
-            <form>
+        <Container id='login-signup-container'>
+            <Form>
+                <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
+                    <Form.Text  className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="lastName">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
+                    <Form.Text  className="text-muted">
+                    We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="userName">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+                    <Form.Text  className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="passwordConfirmation">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={(e) => setPasswordConfirmation(e.target.value)}/>
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={handleLogin}>
+                    Submit
+                </Button>
+            </Form>
+            {/* <form>
+                <title>Signup</title>
                 <label>First name:</label>
                 <input type='text' onChange={(e) => setFirstName(e.target.value)}></input>
                 <label>Last name:</label>
@@ -61,8 +100,8 @@ function Signup(){
                 <label>Confirm password:</label>
                 <input type='password' onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
                 <button type='submit' onClick={handleLogin}>signup</button>
-            </form>
-        </div>
+            </form> */}
+        </Container>
     )
 }
 

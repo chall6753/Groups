@@ -1,6 +1,8 @@
 //action creators
-
 import { useSelector } from "react-redux"
+
+import {showYourGroups} from './groupsReducer'
+
 
 
 export const login = (username, password, navigate) => {
@@ -22,9 +24,10 @@ export const login = (username, password, navigate) => {
             })
     }    
 }
-export function logout(){
+export const logout = () => {
     return async (dispatch) => {
-        fetch('/logout').then(dispatch({type: 'logout'}))
+        fetch('/logout').then(() => dispatch({type: 'logout'})).then(() => dispatch(showYourGroups()))
+        
     }
 }
 export const setCurrentUser = () => {

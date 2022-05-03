@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+import {Container} from 'react-bootstrap'
 import {login} from '../../reducers/sessionsReducer'
 
 
@@ -18,8 +19,9 @@ function Signup(){
     }
 
     return (
-        <div>
-            <h1>Login</h1>
+        <Container id='login-signup-container'>
+            <div>
+                <h1>Login</h1>
             <form>
                 <label>username:</label>
                 <input type='text' onChange={(e) => setUsername(e.target.value)}></input>
@@ -27,7 +29,9 @@ function Signup(){
                 <input type='password' onChange={(e) => setPassword(e.target.value)}></input>
                 <button type='submit' onClick={handleLogin}>login</button>
             </form>
-        </div>
+            </div>
+            
+        </Container>
     )
 }
 
