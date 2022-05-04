@@ -2,7 +2,7 @@ import React from "react";
 import {Container} from "react-bootstrap"
 
 
-function GroupsChats(){
+function GroupChatCard(){
 
 
     return (
@@ -11,3 +11,6 @@ function GroupsChats(){
         </Container>
     )
 }
+
+
+export default GroupChatCard

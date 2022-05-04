@@ -18,8 +18,8 @@ class GroupsController < ApplicationController
   # POST /groups
   def create
     @group = current_user.created_groups.new(group_params)
-    
     if @group.save
+      @group.chats.create(user_id: current_user.id, comment:'welcome to the group chat') #initializes group chat with first post
       render json: @group, status: :created, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity

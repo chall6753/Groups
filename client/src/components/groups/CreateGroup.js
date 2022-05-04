@@ -20,26 +20,8 @@ function CreateGroup(){
     
     function handleCreateGroup(e){
         e.preventDefault();
-        dispatch(createGroup(name, location, description, startDate, endDate))
-        // fetch('/groups',{
-        //     method: 'POST',
-        //     headers: {"Content-Type": 'application/json'},
-        //     body: JSON.stringify({
-        //         name: name,
-        //         location: location,
-        //         description: description, 
-        //         start_date: startDate,
-        //         end_date: endDate
-        //     })
-        // })
-        // .then(res => {
-        //     if (res.ok){
-        //         console.log('success')
-        //         res.json().then(group => dispatch(createGroup(group)))
-        //         navigate('/')
-        //     }
-        //     else {console.log('error')}
-        // })
+        dispatch(createGroup(name, location, description, startDate, endDate, navigate))
+        
     }
 
     return (

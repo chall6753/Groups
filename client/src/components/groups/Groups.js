@@ -9,6 +9,8 @@ function Groups(){
     const groups = useSelector(state => state.groups)
     console.log(groups)
 
+    
+
     return (
         <Container id='groupContainer'>
             <Card className='groupCard'style={{ width: '18rem' }}>

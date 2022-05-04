@@ -1,7 +1,7 @@
 
 //action creators - where we fetch data or call action to change state
 
-export const createGroup = (name, location, description, startDate, endDate) => {
+export const createGroup = (name, location, description, startDate, endDate, navigate) => {
   return  async (dispatch) => {
     fetch('/groups',{
       method: 'POST',
@@ -18,7 +18,7 @@ export const createGroup = (name, location, description, startDate, endDate) => 
         if (res.ok){
             console.log('success')
             res.json().then(group => dispatch({type: 'createGroup', payload: group}))
-            //navigate('/')
+            navigate('/group_list')
         }
         else {console.log('error')}
     })      
@@ -40,6 +40,27 @@ export const showYourGroups = ()=> {
       })
     }
 }
+
+export const deleteGroup = (group_id, navigate)=> {
+
+  return async (dispatch) => {
+      fetch(`/groups/${group_id}`,{
+        method: 'DELETE'
+      })
+      .then(res => {
+        if(res.ok){
+          
+          dispatch({type: 'deleteGroup', payload: group_id})
+          navigate('/group_list')
+        }
+        else{
+          console.log("no group found")
+          
+        }
+      })
+    }
+}
+
 //reducers- where we change state
 
 const initialState = []
@@ -54,6 +75,9 @@ export default function groupsReducer(state = initialState, action) {
         console.log('showyourgroups')
         console.log(action.payload)
         return action.payload
+      case "deleteGroup":
+        let updatedState = state.filter(group=> group.id != action.payload)
+        return updatedState
       default:
         return state;
     }

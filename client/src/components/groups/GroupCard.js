@@ -1,10 +1,11 @@
 import React from "react";
-import {Card} from 'react-bootstrap'
-import {Button} from 'react-bootstrap'
+import {Card, Button} from 'react-bootstrap'
+import {useNavigate} from 'react-router-dom'
 
 
 
 function GroupCard({group}){
+    const navigate = useNavigate();
 
     return (
         <Card className='groupCard'style={{ width: '18rem' }}>
@@ -15,7 +16,7 @@ function GroupCard({group}){
                 <Card.Text>
                 {group.description}
                 </Card.Text>
-                <Button variant="primary">Go to group</Button>
+                <Button variant="primary" onClick={()=> navigate(`/group/${group.id}`)}>Go to group</Button>
             </Card.Body>
         </Card>
     )

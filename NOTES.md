@@ -21,5 +21,8 @@
 - added homenotloggedin component
 - worked on css for home page 
 
-4/24 
-- 
+5/3
+- created chats 
+- delete button for groups
+- update groups reducer to handle delete
+

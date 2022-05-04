@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-  before_action :set_chat, only: %i[ show update destroy ]
+  before_action :set_chat, only: %i[ update destroy ]
 
   # GET /chats
   def index
@@ -10,13 +10,16 @@ class ChatsController < ApplicationController
 
   # GET /chats/1
   def show
-    render json: @chat
+   
+    group = Group.find(params[:id])
+   
+    @chats = group.chats.order(updated_at: :desc)
+    render json: @chats
   end
 
   # POST /chats
   def create
     @chat = Chat.new(chat_params)
-
     if @chat.save
       render json: @chat, status: :created, location: @chat
     else
@@ -46,6 +49,6 @@ class ChatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chat_params
-      params.require(:chat).permit(:user_id, :group_id, :comment)
+      params.permit(:user_id, :group_id, :comment)
     end
 end
