@@ -1,25 +1,22 @@
 class ChatsController < ApplicationController
-  before_action :set_chat, only: %i[ update destroy ]
+  before_action :set_chat, only: %i[ show update destroy ]
 
   # GET /chats
   def index
-    @chats = Chat.all
-
+    @chats = Chat.all.order(updated_at: :desc)
     render json: @chats
   end
 
   # GET /chats/1
   def show
-   
-    group = Group.find(params[:id])
-   
-    @chats = group.chats.order(updated_at: :desc)
-    render json: @chats
+    render json: @chat
   end
 
   # POST /chats
   def create
-    @chat = Chat.new(chat_params)
+    
+    @chat = current_user.chats.new(chat_params)
+    
     if @chat.save
       render json: @chat, status: :created, location: @chat
     else

@@ -4,7 +4,7 @@ import GroupCard from './GroupCard'
 import {Container, Button, Card} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 
-function Groups(){
+function JoinGroups(){
     const navigate = useNavigate()
     const groups = useSelector(state => state.groups)
     console.log(groups)
@@ -12,9 +12,9 @@ function Groups(){
     
 
     return (
-        
-        <Container id='groupContainer'>
-             
+        <div>
+            <h1>Join Groups</h1>
+            <Container id='groupContainer'>
                 
                 <Card className='groupCard'style={{ width: '18rem' }}>
             
@@ -26,10 +26,11 @@ function Groups(){
                     return <GroupCard key={group.id} group={group}/>
                     })
                 }   
-            
-        </Container>
+            </Container>
+        </div>
+        
         
     )
 }
 
-export default Groups
+export default JoinGroups

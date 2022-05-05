@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Container, Form, Button} from "react-bootstrap"
+import {useDispatch} from 'react-redux'
+import {createChat} from '../../reducers/chatsReducer'
 
 
-function CreateChat({handleSubmit}){
-    
+function CreateChat({group_id}){
+    const dispatch = useDispatch()
     const [chat, setChat]= useState('')
 
 
@@ -16,7 +18,8 @@ function CreateChat({handleSubmit}){
 
             
             <Button variant="primary" type="submit" onClick={(e)=> {
-                handleSubmit(e, chat)
+                e.preventDefault()
+                dispatch(createChat(chat, group_id))
                 setChat('')
                 }}>
                 Submit

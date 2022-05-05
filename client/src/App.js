@@ -9,20 +9,22 @@ import Groups from './components/groups/Groups'
 import Group from './components/groups/Group'
 import Header from './components/Navigation/Header'
 import GroupChats from './components/Chats/GroupChats'
+import Events from './components/Events/Events'
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux'
 import { setCurrentUser } from './reducers/sessionsReducer'
-import {showYourGroups} from './reducers/groupsReducer'
+import {showGroups} from './reducers/groupsReducer'
+import {showEvents} from './reducers/eventsReducer'
+import {showChats} from './reducers/chatsReducer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const dispatch = useDispatch()
    const currentUser = useSelector(state => state.session)
-  useEffect(()=>{
-    dispatch(setCurrentUser())
-  },[]);
-  useEffect(()=>{dispatch(showYourGroups())},[currentUser]);
-   
+  useEffect(()=>{dispatch(setCurrentUser())},[]);
+  useEffect(()=>{dispatch(showGroups())},[currentUser]);
+  useEffect(()=>{dispatch(showEvents())},[]);
+  useEffect(()=>{dispatch(showChats())},[])
   
  
   return (
@@ -37,6 +39,7 @@ function App() {
         <Route path='/group_list' element={<Groups/>}/>
         <Route path='/group/:id' element={<Group/>}/> 
         <Route path='/group_chats/:id' element={<GroupChats/>}/>
+        <Route path='/events' element={<Events/>}/>
       </Routes>
     </div>
   );

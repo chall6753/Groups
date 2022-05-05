@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "/signup", to: 'users#create'
   get '/currentUser', to: 'sessions#auth'
 
+ 
+
   # Defines the root path route ("/")
   # root "articles#index"
 end

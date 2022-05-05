@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   def index
     if current_user
-      render json: current_user.created_groups
+      render json: Group.all
     else render json: {error: 'not logged in'}
     end
   end
@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
     @group = current_user.created_groups.new(group_params)
     if @group.save
       @group.chats.create(user_id: current_user.id, comment:'welcome to the group chat') #initializes group chat with first post
+      @group.user_groups.create(user_id: current_user.id)
       render json: @group, status: :created, location: @group
     else
       render json: @group.errors, status: :unprocessable_entity
@@ -40,6 +41,10 @@ class GroupsController < ApplicationController
     @group.destroy
   end
 
+  def show_your_groups
+    groups = current_user.memberships
+    byebug
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group

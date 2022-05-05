@@ -22,20 +22,22 @@ export const createGroup = (name, location, description, startDate, endDate, nav
         }
         else {console.log('error')}
     })      
+   
+    
   }   
 }
 
-export const showYourGroups = ()=> {
+export const showGroups = ()=> {
 
   return async (dispatch) => {
       fetch('/groups')
       .then(res => {
         if(res.ok){
-          res.json().then(groups => dispatch({type: 'showYourGroups', payload: groups}))
+          res.json().then(groups => dispatch({type: 'showGroups', payload: groups}))
         }
         else{
           console.log("not logged in")
-          res.json().then(groups => dispatch({type: 'showYourGroups', payload: initialState}))
+          res.json().then(groups => dispatch({type: 'showGroups', payload: initialState}))
         }
       })
     }
@@ -71,9 +73,8 @@ export default function groupsReducer(state = initialState, action) {
         console.log(action.payload)
         
         return [...state, action.payload]
-      case "showYourGroups":
-        console.log('showyourgroups')
-        console.log(action.payload)
+      case "showGroups":
+        
         return action.payload
       case "deleteGroup":
         let updatedState = state.filter(group=> group.id != action.payload)

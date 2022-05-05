@@ -15,7 +15,7 @@ function SideNav(){
                     <Nav className="me-auto" id='sidenav'>
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/group_list">Groups</Nav.Link>
-                        
+                        <Nav.Link as={Link} to="/events">Events</Nav.Link>
                         
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
