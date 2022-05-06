@@ -23,8 +23,8 @@ function Group(){
     useEffect(()=>setCanModifyGroup(groups.find((group)=> group.id == group_id )?.can_modify_group),[])
 
     
-    
     console.log(chats)
+    
     return (
         <Container>
             <CreateEvent group_id={group_id}/>

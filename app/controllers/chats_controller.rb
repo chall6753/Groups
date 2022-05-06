@@ -36,6 +36,7 @@ class ChatsController < ApplicationController
   # DELETE /chats/1
   def destroy
     @chat.destroy
+
   end
 
   private
@@ -46,6 +47,7 @@ class ChatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chat_params
-      params.permit(:user_id, :group_id, :comment)
+      
+      params.permit(:user_id, :group_id, :event_id, :comment)
     end
 end

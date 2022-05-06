@@ -10,6 +10,7 @@ import Group from './components/groups/Group'
 import Header from './components/Navigation/Header'
 import GroupChats from './components/Chats/GroupChats'
 import Events from './components/Events/Events'
+import Event from './components/Events/Event'
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux'
 import { setCurrentUser } from './reducers/sessionsReducer'
@@ -40,6 +41,7 @@ function App() {
         <Route path='/group/:id' element={<Group/>}/> 
         <Route path='/group_chats/:id' element={<GroupChats/>}/>
         <Route path='/events' element={<Events/>}/>
+        <Route path='/events/:id' element={<Event/>}/>
       </Routes>
     </div>
   );

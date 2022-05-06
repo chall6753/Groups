@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {Card, Button} from "react-bootstrap"
 import {useSelector, useDispatch} from 'react-redux'
+import {deleteChat, updateChat} from '../../reducers/chatsReducer'
+
 
 
 
@@ -19,8 +21,14 @@ function ChatCard({chat}){
     function toggleShowEditForm(){
         setShowEditForm(!showEditForm)
       }
-    function handleUpdateChat(){
-      
+    function handleUpdateChat(e,chat_id, updatedComment){
+      e.preventDefault()
+      dispatch(updateChat(chat_id, updatedComment))
+    }
+    function handleDelete(e){
+      e.preventDefault()    
+      dispatch(deleteChat(chat.id))
+      toggleShowEditForm()
     }
     return (
         <div className="container mt-5">
@@ -38,7 +46,9 @@ function ChatCard({chat}){
                       <small>{chat.updated_at}</small>
                       {showEditForm?<div><input type="text" value={updatedComment} onChange={(e)=> setUpdatedComment(e.target.value)}></input>
                         <Button onClick={(e)=>{handleUpdateChat(e, chat.id, updatedComment) 
-                        toggleShowEditForm()}}>Submit</Button></div>:null}
+                          toggleShowEditForm()}}>Submit</Button>
+                          <Button onClick={(e)=> handleDelete(e)}>Delete</Button>
+                        </div>:null}
                       </div>
                       
                       </div>

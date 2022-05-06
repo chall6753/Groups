@@ -1,15 +1,16 @@
 import React from 'react';
 import {Card} from 'react-bootstrap'
+import {useNavigate} from 'react-router-dom'
 
 
 function EventCard({event}){
-
-    console.log(event.name)
+    const navigate = useNavigate()
+    
 
     return (
         <Card>
-            <Card.Body>
-              <Card.Title>{event.name}</Card.Title> 
+            <Card.Body onClick={()=> navigate(`/events/${event.id}`)}>
+              <Card.Title >{event.name}</Card.Title> 
               <Card.Text>Time: {event.start_date}</Card.Text> 
               <Card.Text>Location: {event.location}</Card.Text> 
               <Card.Text>Descritpion: {event.description}</Card.Text> 

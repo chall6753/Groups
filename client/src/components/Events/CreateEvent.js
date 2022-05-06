@@ -36,7 +36,7 @@ function CreateEvent({group_id}){
                 <label>End Date:</label>
                 <input type='datetime-local' onChange={(e) => setEndDate(e.target.value)}></input>
                 
-                <button type='submit' onClick={handleCreateEvent}>Create Group</button>
+                <button type='submit' onClick={handleCreateEvent}>Create Event</button>
             </form>
         </div>
             

@@ -5,20 +5,16 @@ import {useParams} from 'react-router-dom'
 import CreateChat from "./CreateChat";
 import ChatCard from './ChatCard'
 
-function GroupChats({chats}){
+function EventChats({event}){
     
-    const group_id = useParams().id
-    console.log(chats)
-    const groupChats = chats.filter((chat) => chat.group.id == group_id)
     
-    console.log(groupChats)
-    if (chats != ''){
+    if (event != ''){
         return (
         <Container>
-            <CreateChat group_id={group_id} />
+            <CreateChat group_id={event.group_id} event_id={event.id}/>
             <div>
-                {groupChats.map(chat=> {
-                    
+                {event.chats.map(chat=> {
+                    console.log(chat)
                     return <ChatCard chat={chat} />
                 })}
             </div>
@@ -26,10 +22,10 @@ function GroupChats({chats}){
         </Container>
         )
     }
-    else{return <CreateChat group_id={group_id} />}  
+    else{return null}  
     
     
 }
 
 
-export default GroupChats
+export default EventChats
