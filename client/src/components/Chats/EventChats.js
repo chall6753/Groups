@@ -5,15 +5,15 @@ import {useParams} from 'react-router-dom'
 import CreateChat from "./CreateChat";
 import ChatCard from './ChatCard'
 
-function EventChats({event}){
+function EventChats({chats}){
+   
     
-    
-    if (event != ''){
+    if (chats != undefined){
         return (
         <Container>
-            <CreateChat group_id={event.group_id} event_id={event.id}/>
+            
             <div>
-                {event.chats.map(chat=> {
+                {chats.map(chat=> {
                     console.log(chat)
                     return <ChatCard chat={chat} />
                 })}
