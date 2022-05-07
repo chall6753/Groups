@@ -38,7 +38,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/create_group' element={<CreateGroup/>}/>
         <Route path='/group_list' element={<Groups/>}/>
-        <Route path='/group/:id' element={<Group/>}/> 
+        <Route path='/groups/:id' element={<Group/>}/> 
         <Route path='/group_chats/:id' element={<GroupChats/>}/>
         <Route path='/events' element={<Events/>}/>
         <Route path='/events/:id' element={<Event/>}/>

@@ -1,19 +1,22 @@
-export const createChat = (comment, group_id, event_id) => {
+export const createChat = (comment, group_id, event_id = null) => {
     return  async (dispatch) => {
       fetch('/chats',{
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
             comment: comment,
-            group_id: group_id,
+            group_id: group_id, 
             event_id: event_id
+           
         })
       })
       .then(res => {
           if (res.ok){
               console.log('success')
-              res.json().then(chat => dispatch({type: 'createChat', payload: chat}))
-             
+              res.json().then(chat => {
+                dispatch({type: 'createChat', payload: chat})
+                dispatch({type: 'updateEventChats', payload: chat})
+              })
           }
           else {console.log('error')}
       })      
@@ -35,7 +38,7 @@ export const createChat = (comment, group_id, event_id) => {
         })
       }
   }
-
+  
   export const deleteChat = (id)=>{
     return async (dispatch) => {
       fetch(`/chats/${id}`,{

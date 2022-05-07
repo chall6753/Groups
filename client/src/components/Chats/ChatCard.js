@@ -12,7 +12,6 @@ function ChatCard({chat}){
     const currentUser = useSelector(state=> state.session)
     const dispatch = useDispatch()
     
-    console.log(chat)
     useEffect(()=>{
       setUpdatedComment(chat.comment)
     },[chat])

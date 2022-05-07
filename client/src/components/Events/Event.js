@@ -1,22 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Card} from 'react-bootstrap'
 import {useParams, useNavigate} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
 import CreateChat from '../Chats/CreateChat';
 import EventChats from '../Chats/EventChats'
+import {showEvent} from '../../reducers/eventReducer'
 
 function Event(){
-
-    const [event, setEvent] = useState('')
+    const eventId = useParams().id
+    const event = useSelector(state => state.event)
+    const chats = useSelector(state => state.chats)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(()=>{
-        fetch(`/events/${eventId}`)
-        .then(res=> res.json())
-        .then(res=> setEvent(res))
+        dispatch(showEvent(eventId))
     },[])
-
-    const eventId = useParams().id
-    console.log(event)
-    return (
+    const eventChats = chats.filter((chat)=> chat.event?.id == eventId)
+    
+    console.log(chats)
+    if(event != undefined){
+       return (
         <Container>
             
             <Card>
@@ -28,10 +31,12 @@ function Event(){
             </Card.Body>
             
         </Card>
-        
-        <EventChats event={event}/>
+        <CreateChat event_id={eventId}/>
+        <EventChats chats={eventChats}/>
         </Container>
-    )
+    ) 
+    }
+    else{return null}
 }
 
 export default Event
