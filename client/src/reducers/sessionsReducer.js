@@ -18,10 +18,11 @@ export const login = (username, password, navigate) => {
             .then(res => {
                 if (res.ok){
                     console.log('success')
-                    res.json().then(user => dispatch({type: "login", payload: user}))
+                    res.json().then(user => dispatch({type: "login", payload: user})).then(() => dispatch(showGroups()))
                     navigate('/')
                 }
             })
+            
     }    
 }
 export const logout = () => {
@@ -30,6 +31,7 @@ export const logout = () => {
         
     }
 }
+
 export const setCurrentUser = () => {
     return async (dispatch) => {
         fetch('/currentUser')
@@ -64,7 +66,7 @@ const initialState = {
 export default function sessionsReducer(state = initialState, action) {
     switch (action.type) {
         case "login":
-        
+            
         return action.payload;
         case 'logout':
         console.log('logged out')

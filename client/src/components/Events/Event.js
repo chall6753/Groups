@@ -17,16 +17,20 @@ function Event(){
     },[])
     const eventChats = chats.filter((chat)=> chat.event?.id == eventId)
     
-    console.log(chats)
+
     if(event != undefined){
+        const startDate = new Date(event.start_date)
+        console.log(event)
        return (
         <Container>
             
             <Card>
             <Card.Body>
               <Card.Title >{event.name}</Card.Title> 
-              <Card.Text>Time: {event.start_date}</Card.Text> 
+              <Card.Text>Date: {startDate.toLocaleDateString()}</Card.Text> 
+              <Card.Text>Time: {startDate.toLocaleTimeString()}</Card.Text> 
               <Card.Text>Location: {event.location}</Card.Text> 
+              
               <Card.Text>Descritpion: {event.description}</Card.Text> 
             </Card.Body>
             

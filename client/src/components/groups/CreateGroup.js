@@ -12,6 +12,8 @@ function CreateGroup(){
     const [description, setDescritpion] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordConfirmation, setPasswordConfirmation] = useState('')
    
 
     const navigate = useNavigate()
@@ -20,7 +22,7 @@ function CreateGroup(){
     
     function handleCreateGroup(e){
         e.preventDefault();
-        dispatch(createGroup(name, location, description, startDate, endDate, navigate))
+        dispatch(createGroup(name, location, description, startDate, endDate, password, passwordConfirmation, navigate))
         
     }
 
@@ -38,6 +40,10 @@ function CreateGroup(){
                 <input type='datetime-local' onChange={(e) => setStartDate(e.target.value)}></input>
                 <label>End Date:</label>
                 <input type='datetime-local' onChange={(e) => setEndDate(e.target.value)}></input>
+                <label>Password:</label>
+                <input type='password' onChange={(e) => setPassword(e.target.value)}></input>
+                <label>Confirm Passwrod:</label>
+                <input type='password' onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
                 
                 <button type='submit' onClick={handleCreateGroup}>Create Group</button>
             </form>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     user = User.new(user_params)
-    byebug
+    
     if user.save
       session[:user_id] = user.id
       render json: user, status: :created
@@ -37,6 +37,18 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # POST /users/join_group
+  def join_group
+      group = Group.find_by(id: params[:group_id])
+        
+    if group &.authenticate(params[:password])
+        current_user.user_groups.create(group_id: params[:group_id])
+        render json: {message: 'joined group'}, status: :created
+    else
+        render json: {errors: "Incorrect password"}, status: :unauthorized
+    end
+     
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

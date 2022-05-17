@@ -14,14 +14,12 @@ function Groups(){
     return (
         
         <Container id='groupContainer'>
-             
-                
-                <Card className='groupCard'style={{ width: '18rem'}}>
+            <Card className='groupCard'>
             
                 <Card.Body>
                     <Button variant="primary" onClick={()=>navigate('/create_group')}>create new group</Button>
                 </Card.Body>
-                </Card>
+            </Card>
                 {groups.map((group)=> {
                     return <GroupCard key={group.id} group={group}/>
                     })

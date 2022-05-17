@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
             render json: {errors: "Incorrect username password combo"}, status: :unauthorized
         end
     end
-
+        
     def auth
         user = current_user
         if user
             render json: user
         else
-            render json: {error: 'no on logged in'}, status: :not_found
+            render json: {error: 'not logged in'}, status: :not_found
         end
     end
 

@@ -26,3 +26,7 @@
 - delete button for groups
 - update groups reducer to handle delete
 
+5/13
+- worked on join groups
+- need to work on what happens when joined
+

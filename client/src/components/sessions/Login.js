@@ -16,6 +16,7 @@ function Signup(){
     function handleLogin(e){
         e.preventDefault();
         dispatch(login(username, password, navigate))
+        
     }
 
     return (

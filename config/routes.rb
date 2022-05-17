@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "logout", to: 'sessions#destroy'
   post "/signup", to: 'users#create'
   get '/currentUser', to: 'sessions#auth'
+  post "/users/join_group", to: "users#join_group"
 
  
 

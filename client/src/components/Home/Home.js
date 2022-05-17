@@ -8,6 +8,7 @@ import HomeLoggedIn from './HomeLoggedIn'
 function Home(){
     
     const currentUser = useSelector(state => state.session)
+    console.log(currentUser)
     if(currentUser.id == ''){
         return (
             <HomeNotLoggedIn/>

@@ -3,15 +3,18 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
+    
     if current_user
       render json: Group.all
-    else render json: {error: 'not logged in'}
+    else 
+      
+      render json: {error: 'not log'}
     end
   end
 
   # GET /groups/1
   def show
-    byebug
+    
     render json: @group
   end
 
@@ -53,6 +56,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.permit(:name, :start_date, :end_date, :location, :description)
+      params.permit(:name, :start_date, :end_date, :location, :description, :password, :password_confirmation)
     end
 end

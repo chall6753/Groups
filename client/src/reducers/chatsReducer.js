@@ -15,7 +15,7 @@ export const createChat = (comment, group_id, event_id = null) => {
               console.log('success')
               res.json().then(chat => {
                 dispatch({type: 'createChat', payload: chat})
-                dispatch({type: 'updateEventChats', payload: chat})
+                
               })
           }
           else {console.log('error')}
@@ -92,7 +92,7 @@ export const createChat = (comment, group_id, event_id = null) => {
 
         case 'updateChat':
           console.log(state)
-          return [action.payload , ...state]
+          return state
         default:
           return state;
       }

@@ -11,12 +11,12 @@ function ChatCard({chat}){
     const [updatedComment, setUpdatedComment] = useState(chat.comment)//issue with chat.comment
     const currentUser = useSelector(state=> state.session)
     const dispatch = useDispatch()
-    
+    const updatedAt = new Date(chat.updated_at).toLocaleString()
     useEffect(()=>{
       setUpdatedComment(chat.comment)
     },[chat])
 
-
+  
     function toggleShowEditForm(){
         setShowEditForm(!showEditForm)
       }
@@ -39,10 +39,10 @@ function ChatCard({chat}){
                         {currentUser.id == chat.user.id?<Button onClick={(e) => toggleShowEditForm(e)} variant='link' size='sm'>Edit</Button>:null}
                         
 
-                        <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2"/>
+                        <div data-initials={chat.user.first_name[0] + chat.user.last_name[0]}></div>
                         <span><small className="font-weight-bold text-primary">{chat.user.username}</small> <small className="font-weight-bold">{updatedComment}</small></span>                        
                       </div>
-                      <small>{chat.updated_at}</small>
+                      <small>{updatedAt}</small>
                       {showEditForm?<div><input type="text" value={updatedComment} onChange={(e)=> setUpdatedComment(e.target.value)}></input>
                         <Button onClick={(e)=>{handleUpdateChat(e, chat.id, updatedComment) 
                           toggleShowEditForm()}}>Submit</Button>

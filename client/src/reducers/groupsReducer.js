@@ -1,7 +1,7 @@
 
 //action creators - where we fetch data or call action to change state
 
-export const createGroup = (name, location, description, startDate, endDate, navigate) => {
+export const createGroup = (name, location, description, startDate, endDate, password, passwordConfirmation, navigate) => {
   return  async (dispatch) => {
     fetch('/groups',{
       method: 'POST',
@@ -11,7 +11,9 @@ export const createGroup = (name, location, description, startDate, endDate, nav
           location: location,
           description: description, 
           start_date: startDate,
-          end_date: endDate
+          end_date: endDate,
+          password: password,
+          password_confirmation: passwordConfirmation
       })
     })
     .then(res => {
@@ -33,11 +35,12 @@ export const showGroups = ()=> {
       fetch('/groups')
       .then(res => {
         if(res.ok){
+          console.log(res)
           res.json().then(groups => dispatch({type: 'showGroups', payload: groups}))
         }
         else{
-          console.log("not logged in")
-          res.json().then(groups => dispatch({type: 'showGroups', payload: initialState}))
+          console.log("yeet")
+          
         }
       })
     }
@@ -62,7 +65,16 @@ export const deleteGroup = (group_id, navigate)=> {
       })
     }
 }
+// export const joinGroup = () => {
 
+//   return async (dispatch) => {
+//     fetch(`groups/join/${id}`, {
+//       method: 'POST', 
+//       headers: {"Content-Type": 'application/json'}
+//     })
+//     .then(res=>res.json()).then(groups)
+//   }
+// }
 //reducers- where we change state
 
 const initialState = []

@@ -1,5 +1,5 @@
 class GroupSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :name, :start_date, :end_date, :location, :can_modify_group, :is_member
+  attributes :id, :user_id, :name, :description, :start_date, :end_date, :location, :can_modify_group, :is_member
 
 
   has_many :members
@@ -11,7 +11,9 @@ class GroupSerializer < ActiveModel::Serializer
     end
   end
   def is_member
+    
     if object.members.find_by(id: current_user.id)
+      
       isMember = true
     else
       isMember = false
