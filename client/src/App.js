@@ -8,7 +8,7 @@ import CreateGroup from './components/groups/CreateGroup'
 import Groups from './components/groups/Groups'
 import Group from './components/groups/Group'
 import Header from './components/Navigation/Header'
-import GroupChats from './components/Chats/GroupChats'
+import GroupChatsPage from './components/Chats/GroupChatsPage'
 import Events from './components/Events/Events'
 import Event from './components/Events/Event'
 import GroupEvents from './components/Events/GroupEvents'
@@ -40,7 +40,7 @@ function App() {
         <Route path='/create_group' element={<CreateGroup/>}/>
         <Route path='/group_list' element={<Groups/>}/>
         <Route path='/groups/:id' element={<Group/>}/> 
-        <Route path='/group_chats/:id' element={<GroupChats/>}/>
+        <Route path='/group_chats/:id' element={<GroupChatsPage/>}/>
         <Route path='/events' element={<Events/>}/>
         <Route path='/events/:id' element={<Event/>}/>
         <Route path='/group_events/:id' element={<GroupEvents/>}/>

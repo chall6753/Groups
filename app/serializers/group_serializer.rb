@@ -10,8 +10,8 @@ class GroupSerializer < ActiveModel::Serializer
       can_modify = false
     end
   end
+
   def is_member
-    
     if object.members.find_by(id: current_user.id)
       
       isMember = true

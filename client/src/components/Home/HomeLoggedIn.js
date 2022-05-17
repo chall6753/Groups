@@ -6,13 +6,7 @@ import {Container, Card, NavLink} from 'react-bootstrap'
 import ChatCard from '../Chats/ChatCard'
 
 const HomeLoggedIn = () => {
-
-    
     const groups = useSelector(state => state.groups)
-    
- 
-    
-
     const events = useSelector(state => state.events)
     const chats = useSelector(state => state.chats).slice(0,5)
     const navigate = useNavigate()
@@ -24,8 +18,8 @@ const HomeLoggedIn = () => {
         const yourGroups = groups.filter((group) => group.is_member)
         
         return (
-        <Container>
-            <Container >
+        <Container className='homeLoggedIn'>
+            <Card>
                 <h1>Your Groups</h1>
                 {yourGroups.map((group) => {
                     let startDate = new Date(group.start_date)
@@ -37,15 +31,15 @@ const HomeLoggedIn = () => {
 
                    ) 
                 }
-            </Container>
-            <Container>
+            </Card>
+            <Card>
                 <h1>Upcoming Events</h1>
                 {events.map((event) => <Card onClick={()=>navigate(`/events/${event.id}`)}>{event.name}<br/>where: {event.location}<br/>when: {event.start_time}</Card>) }
-            </Container>
-            <Container>
+            </Card>
+            <Card>
                 <h1>Recent Chats</h1>
                 {chats.map((chat) => <ChatCard chat={chat}/>) }
-            </Container>
+            </Card>
         </Container>
     )
     }

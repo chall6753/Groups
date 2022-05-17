@@ -33,6 +33,7 @@ function GroupCard({group}){
         .then(res=>{
             if (res.ok){
                 setIsMember(true)
+                setShowJoinForm(false)
             }
             else{window.alert('wrong password')}
         })

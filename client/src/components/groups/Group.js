@@ -26,8 +26,8 @@ function Group(){
         return (
         <Container className='groupPage'>
             <Card>
-                <Card.Title>{group.name}</Card.Title>
-                <h2>Where: {group.location}</h2>
+                <h1>{group.name}</h1>
+                <h4>Where: {group.location}</h4>
                 <h4>Start Date: {startDate.getMonth()+'-'+startDate.getDate()+'-'+startDate.getFullYear()}</h4>
                 <h4>End Date: {endDate.getMonth()+'-'+endDate.getDate()+'-'+endDate.getFullYear()}</h4>
                 
@@ -39,7 +39,7 @@ function Group(){
             </Card>  
             
             
-            <Card onClick={()=>navigate('/')}>
+            <Card onClick={()=>navigate(`/group_chats/${group_id}`)}>
                 <Card.Title>Chats</Card.Title>
                 <GroupChats chats={chats.slice(0,5)}/>
             </Card>
