@@ -24,7 +24,7 @@ class Api::GroupsController < ApplicationController
     if @group.save
       @group.chats.create(user_id: current_user.id, comment:'welcome to the group chat') #initializes group chat with first post
       @group.user_groups.create(user_id: current_user.id)
-      render json: @group, status: :created, location: @group
+      render json: @group, status: :created
     else
       render json: @group.errors, status: :unprocessable_entity
     end

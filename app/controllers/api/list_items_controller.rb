@@ -18,7 +18,7 @@ class Api::ListItemsController < ApplicationController
     @list_item = ListItem.new(list_item_params)
 
     if @list_item.save
-      render json: @list_item, status: :created, location: @list_item
+      render json: @list_item, status: :created
     else
       render json: @list_item.errors, status: :unprocessable_entity
     end
