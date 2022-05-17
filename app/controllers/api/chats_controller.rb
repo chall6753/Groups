@@ -1,4 +1,4 @@
-class ChatsController < ApplicationController
+class Api::ChatsController < ApplicationController
   before_action :set_chat, only: %i[ show update destroy ]
 
   # GET /chats
@@ -18,7 +18,7 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     
     if @chat.save
-      render json: @chat, status: :created, location: @chat
+      render json: @chat, status: :created
     else
       render json: @chat.errors, status: :unprocessable_entity
     end

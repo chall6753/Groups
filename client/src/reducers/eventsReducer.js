@@ -1,6 +1,6 @@
 export const createEvent = (name, location, description, startDate, endDate, group_id, navigate) => {
     return  async (dispatch) => {
-      fetch('/events',{
+      fetch('/api/events',{
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
@@ -26,7 +26,7 @@ export const createEvent = (name, location, description, startDate, endDate, gro
   export const showEvents = ()=> {
 
     return async (dispatch) => {
-        fetch('/events')
+        fetch('/api/events')
         .then(res => {
           if(res.ok){
             res.json().then(events => dispatch({type: 'showEvents', payload: events}))

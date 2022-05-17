@@ -7,7 +7,7 @@ import {showGroups} from './groupsReducer'
 
 export const login = (username, password, navigate) => {
     return async (dispatch) => {
-        fetch('/login',{
+        fetch('/api/login',{
                 method: 'POST',
                 headers: {"Content-Type": 'application/json'},
                 body: JSON.stringify({
@@ -27,14 +27,14 @@ export const login = (username, password, navigate) => {
 }
 export const logout = () => {
     return async (dispatch) => {
-        fetch('/logout').then(() => dispatch({type: 'logout'})).then(() => dispatch(showGroups()))
+        fetch('/api/logout').then(() => dispatch({type: 'logout'})).then(() => dispatch(showGroups()))
         
     }
 }
 
 export const setCurrentUser = () => {
     return async (dispatch) => {
-        fetch('/currentUser')
+        fetch('/api/currentUser')
             .then(res => {
                 if (res.ok){
                     console.log('success')

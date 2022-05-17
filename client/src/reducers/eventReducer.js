@@ -3,7 +3,7 @@
   export const showEvent = (id)=> {
 
     return async (dispatch) => {
-        fetch(`/events/${id}`)
+        fetch(`/api/events/${id}`)
         .then(res => {
           if(res.ok){
             res.json().then(event => dispatch({type: 'showEvent', payload: event}))

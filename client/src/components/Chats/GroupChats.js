@@ -9,7 +9,7 @@ function GroupChats({chats}){
     
     const group_id = useParams().id
     console.log(chats)
-    const groupChats = chats.filter((chat) => chat.group?.id == group_id)
+    const groupChats = chats.filter((chat) => chat.group?.id == group_id).slice(0,5)
     
     console.log(groupChats)
     if (chats != ''){

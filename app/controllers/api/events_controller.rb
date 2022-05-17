@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Api::EventsController < ApplicationController
   before_action :set_event, only: %i[ show update destroy ]
 
   # GET /events
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
     if @event.save
       
-      render json: @event, status: :created, location: @event
+      render json: @event, status: :created
     else
       render json: @event.errors, status: :unprocessable_entity
     end

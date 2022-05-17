@@ -22,7 +22,7 @@ function GroupCard({group}){
     }
 
     const handleJoinGroup = ()=>{
-        fetch(`/users/join_group`, {
+        fetch(`/api/users/join_group`, {
             method: 'POST',
             headers: {"Content-Type": 'application/json'},
             body: JSON.stringify({

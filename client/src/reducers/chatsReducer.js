@@ -1,6 +1,6 @@
 export const createChat = (comment, group_id, event_id = null) => {
     return  async (dispatch) => {
-      fetch('/chats',{
+      fetch('/api/chats',{
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
@@ -26,7 +26,7 @@ export const createChat = (comment, group_id, event_id = null) => {
   export const showChats = ()=> {
 
     return async (dispatch) => {
-        fetch('/chats')
+        fetch('/api/chats')
         .then(res => {
           if(res.ok){
             res.json().then(chats => dispatch({type: 'showChats', payload: chats}))
@@ -41,7 +41,7 @@ export const createChat = (comment, group_id, event_id = null) => {
   
   export const deleteChat = (id)=>{
     return async (dispatch) => {
-      fetch(`/chats/${id}`,{
+      fetch(`/api/chats/${id}`,{
         method: 'DELETE'
       })
       .then(res => {
@@ -58,7 +58,7 @@ export const createChat = (comment, group_id, event_id = null) => {
   
   export const updateChat = (id, comment) => {
     return async (dispatch) => {
-      fetch(`/chats/${id}`,{
+      fetch(`/api/chats/${id}`,{
         method: 'PATCH', 
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({

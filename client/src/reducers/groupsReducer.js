@@ -3,7 +3,7 @@
 
 export const createGroup = (name, location, description, startDate, endDate, password, passwordConfirmation, navigate) => {
   return  async (dispatch) => {
-    fetch('/groups',{
+    fetch('/api/groups',{
       method: 'POST',
       headers: {"Content-Type": 'application/json'},
       body: JSON.stringify({
@@ -32,7 +32,7 @@ export const createGroup = (name, location, description, startDate, endDate, pas
 export const showGroups = ()=> {
 
   return async (dispatch) => {
-      fetch('/groups')
+      fetch('/api/groups')
       .then(res => {
         if(res.ok){
           console.log(res)
@@ -49,7 +49,7 @@ export const showGroups = ()=> {
 export const deleteGroup = (group_id, navigate)=> {
 
   return async (dispatch) => {
-      fetch(`/groups/${group_id}`,{
+      fetch(`/api/groups/${group_id}`,{
         method: 'DELETE'
       })
       .then(res => {
