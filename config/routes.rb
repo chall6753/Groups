@@ -15,7 +15,5 @@ Rails.application.routes.draw do
   post "/users/join_group", to: "users#join_group"
 
  
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
