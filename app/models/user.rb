@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :memberships, through: :user_groups, source: :group
   has_many :created_groups, class_name: 'Group'
   has_many :chats
+  has_many :pictures
 end

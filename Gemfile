@@ -32,3 +32,6 @@ group :development do
   # gem "spring"
 end
 
+
+gem "cloudinary", "~> 1.23"
+gem "dotenv-rails", "~> 2.7"

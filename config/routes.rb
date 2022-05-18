@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
+  resources :pictures
 
   namespace :api do
+    get 'uploads/prepare'
     resources :chats
     resources :list_items
     resources :lists
     resources :events
     resources :groups
     resources :users
+    resources :pictures
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-    
+    post "uploads/prepare", to: "uploads#prepare"
     post "/login", to: 'sessions#create'
     get "/logout", to: 'sessions#destroy'
     post "/signup", to: 'users#create'

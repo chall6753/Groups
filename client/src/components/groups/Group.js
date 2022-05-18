@@ -8,6 +8,7 @@ import CreateEvent from './../Events/CreateEvent'
 import EventCard from './../Events/EventCard'
 
 
+
 function Group(){
     
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ function Group(){
                 
                 <p>{group.description}</p>
             </Card>
-            <Card onClick={()=>navigate(`/group_events/${group_id}`)}>
+            <Card>
                 <Card.Title>events</Card.Title>
                 {groupEvents.map(event=><EventCard event={event}/>)}
             </Card>  
@@ -43,9 +44,14 @@ function Group(){
                 <Card.Title>Chats</Card.Title>
                 <GroupChats chats={chats}/>
             </Card>
+            <Card onClick={()=>navigate(`/pictures/${group_id}`)}>
+                <h1>Pictures</h1>
+            </Card>
             <Card>
                 {group.can_modify_group?<Button onClick={()=> dispatch(deleteGroup(group_id, navigate))}>Delete</Button>:null}
             </Card>
+            
+            
         </Container>
         )
     }
