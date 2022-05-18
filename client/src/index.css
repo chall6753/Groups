@@ -54,13 +54,16 @@ code {
 
 #groupContainer{
   display: flex;
-  
   flex-wrap: wrap;
 }
 
 .groupCard{
   width: 300px;
   height: auto;
+}
+.thumbnailCard{
+  width: 250px;
+  height: 250px;
 }
 
 #login-signup-container{

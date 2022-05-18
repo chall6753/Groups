@@ -1,5 +1,6 @@
 // client/src/components/CloudinaryUpload.js
 import React, { useEffect } from "react";
+import {Button} from 'react-bootstrap'
 
 function CloudinaryUpload({
   preset,
@@ -58,9 +59,9 @@ function CloudinaryUpload({
   }, [preset, handleUpload]);
 
   return (
-    <a href="#" id={generateId()}>
+    <Button href="#" id={generateId()}>
       {buttonText}
-    </a>
+    </Button>
   );
 }
 

@@ -1,29 +1,28 @@
 import React, {useState,useEffect} from "react";
 import {Container, Button, Card} from "react-bootstrap"
 import {useParams, useNavigate} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
-import GroupChats from '../Chats/GroupChats'
-import {deleteGroup} from '../../reducers/groupsReducer'
-import CreateEvent from './../Events/CreateEvent'
-import EventCard from './../Events/EventCard'
+import {Image} from 'cloudinary-react'
 import CloudinaryUpload from "../Pictures/CloudinaryUpload";
+import Thumbnail from "./Thumbnail"
 
 
 function Pictures(){
     const group_id = useParams().id
+    const [pics, setPics] = useState('')
    
     useEffect(()=>{
         fetch(`/api/pictures/${group_id}`)
         .then(res=>res.json())
-        .then(res=> console.log(res))
-    })
-
+        .then(res=> setPics(res))
+    },[])
+    console.log(pics)
     const handleUpload = (result) => {
         const body = {
           thumbnail: result.info.secure_url,
           cloudinary_public_id: result.info.public_id,
           group_id: group_id
         }
+        
         fetch('/api/pictures', {
           method: 'POST',
           headers: {
@@ -32,21 +31,28 @@ function Pictures(){
           body: JSON.stringify(body)
         })
           .then(res => res.json())
-          .then(user => {
-            console.log(user);
+          .then(pic => {
+            setPics([pic,...pics]);
           })
       }
 
     return(
-        <Container>
-            <Card>
-                <CloudinaryUpload
+        <div>
+          
+            <CloudinaryUpload
                  preset="r9y7oavj"
                  buttonText="Upload Picture"
                  handleUpload={handleUpload}
                 />
-            </Card>
-        </Container>
+          
+          
+          <Container id='groupContainer'>
+            
+              {pics?pics.map((pic)=> <Thumbnail pic={pic}/>):null}
+            
+          </Container>
+        </div>
+        
     )
 }
 
