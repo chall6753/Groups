@@ -1,6 +1,6 @@
 //action creators
 import { useSelector } from "react-redux"
-
+import {showChats} from './chatsReducer'
 import {showGroups} from './groupsReducer'
 
 
@@ -17,8 +17,10 @@ export const login = (username, password, navigate) => {
             })
             .then(res => {
                 if (res.ok){
-                    console.log('success')
-                    res.json().then(user => dispatch({type: "login", payload: user})).then(() => dispatch(showGroups()))
+                    res.json().then(user => dispatch({type: "login", payload: user})).then(() => {
+                        dispatch(showGroups())
+                        dispatch(showChats())
+                    })
                     navigate('/')
                 }
             })

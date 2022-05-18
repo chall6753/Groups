@@ -12,7 +12,7 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def is_member
-    if object.members.find_by(id: current_user.id)
+    if object.members.find_by(id: current_user&.id)
       
       isMember = true
     else
