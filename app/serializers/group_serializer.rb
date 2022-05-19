@@ -1,5 +1,5 @@
 class GroupSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :name, :description, :start_date, :end_date, :location, :can_modify_group, :is_member
+  attributes :id, :user_id, :name, :description, :start_date, :end_date, :location, :can_modify_group, :group_pic_url, :cloudinary_public_id, :is_member
 
 
   has_many :members

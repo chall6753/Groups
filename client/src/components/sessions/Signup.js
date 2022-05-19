@@ -31,8 +31,6 @@ function Signup(){
                 email: email,
                 password: password,
                 password_confirmation: passwordConfirmation
-
-
             })
         })
         .then(res => {

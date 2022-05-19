@@ -1,7 +1,7 @@
 
 //action creators - where we fetch data or call action to change state
 
-export const createGroup = (name, location, description, startDate, endDate, password, passwordConfirmation, navigate) => {
+export const createGroup = (name, location, description, startDate, endDate, password, passwordConfirmation, groupPicUrl, cloudinaryPublicId, navigate) => {
   return  async (dispatch) => {
     fetch('/api/groups',{
       method: 'POST',
@@ -13,7 +13,9 @@ export const createGroup = (name, location, description, startDate, endDate, pas
           start_date: startDate,
           end_date: endDate,
           password: password,
-          password_confirmation: passwordConfirmation
+          password_confirmation: passwordConfirmation,
+          group_pic_url: groupPicUrl,
+          cloudinaryPublicId: cloudinaryPublicId
       })
     })
     .then(res => {

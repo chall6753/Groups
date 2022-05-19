@@ -56,6 +56,6 @@ class Api::GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.permit(:name, :start_date, :end_date, :location, :description, :password, :password_confirmation)
+      params.permit(:name, :start_date, :end_date, :location, :description, :password, :password_confirmation, :group_pic_url, :cloudinary_public_id)
     end
 end
