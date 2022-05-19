@@ -40,9 +40,9 @@ function GroupCard({group}){
     }
 
     return (
-        <Card className='groupCard'style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://www.libertytravel.com/sites/default/files/styles/full_size/public/all%20inclusive-hero%20%281%29.jpg?itok=JjwsPBPZ" />
-            <Card.Body>
+        <Card className='groupCard'>
+            <Card.Img variant='top' src={group.group_pic_url} style={{width: '75%', height: 'auto', margin: '10px'}}/>
+            <Card.Body style={{padding: '0px'}}>
                 <Card.Title>{group.name}</Card.Title>
                 <Card.Subtitle>Location: {group.location}</Card.Subtitle>
                 <Card.Text>

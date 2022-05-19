@@ -2,7 +2,7 @@ import React, {useState,useEffect} from "react";
 import {Container, Button, Card} from "react-bootstrap"
 import {useParams, useNavigate} from 'react-router-dom'
 import {Image} from 'cloudinary-react'
-import CloudinaryUpload from "../Pictures/CloudinaryUpload";
+import CloudinaryUpload from "./CloudinaryUpload";
 import Thumbnail from "./Thumbnail"
 
 

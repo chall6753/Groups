@@ -2,18 +2,14 @@
 import React, { useEffect } from "react";
 import {Button} from 'react-bootstrap'
 
-function CloudinaryUpload({
-  preset,
-  handleUpload,
-  buttonText
-}) {
+function CloudinaryUpload({preset,handleUpload,buttonText}) {
 
   // this function will generate an id to be used in
   // targeting the element to which we'll add a click event
   // listener to trigger the upload widget to appear.
   // We're generating the id based on the button text
   // so that we'll be able to have multiple buttons with
-  // different upload presents visible on the same page.
+  // different upload presets visible on the same page.
   const generateId = () => {
     const ending = buttonText.split(' ').map(w => w.toLowerCase()).join('_')
     return `upload_widget_${ending}`

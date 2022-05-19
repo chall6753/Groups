@@ -6,9 +6,10 @@ import {Container, Card, NavLink} from 'react-bootstrap'
 import ChatCard from '../Chats/ChatCard'
 
 const HomeLoggedIn = () => {
+    const currentUser = useSelector(state => state.session)
     const groups = useSelector(state => state.groups)
-    const events = useSelector(state => state.events).slice(0,4)
-    const chats = useSelector(state => state.chats).slice(0,4)
+    const events = useSelector(state => state.events).filter((event)=> event.user_id == currentUser.id).slice(0,4)
+    const chats = useSelector(state => state.chats).filter((chat)=> chat.user_id == currentUser.id).slice(0,4)
     const navigate = useNavigate()
 
     if (groups.error){
@@ -36,7 +37,7 @@ const HomeLoggedIn = () => {
                    ) 
                 })}
             </Card>
-            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=> navigate(`/events`)}>
                 <h1>Upcoming Events</h1>
                 {events.map((event) => {
                     return(

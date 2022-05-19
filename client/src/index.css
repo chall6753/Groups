@@ -83,11 +83,14 @@ code {
 #groupContainer{
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .groupCard{
+  justify-content: center;
+  align-items: center;
   width: 300px;
-  height: auto;
+  max-height: 400px;
   margin: 10px;
   background: rgba(255,255,255,0.5);
 }

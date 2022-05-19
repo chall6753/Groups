@@ -32,7 +32,7 @@ function ChatCard({chat}){
     return (
         <div className="container mt-3" key={chat.id}>
             <div className="row  d-flex justify-content-center">
-                <div className="col-md-8">
+                <div className="col-lg-12">
                     <div className="card p-3">
                         <div className="d-flex justify-content-between align-items-center"/>
                       <div className="user d-flex flex-row align-items-center">
