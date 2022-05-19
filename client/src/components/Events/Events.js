@@ -9,7 +9,7 @@ function Events(){
         const events = useSelector(state => state.events)
         console.log(events)
     return (
-        <Container>
+        <Container >
             
             {events.map(event=><EventCard event={event}/>)}
             

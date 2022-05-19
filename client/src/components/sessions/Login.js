@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {Container} from 'react-bootstrap'
+import {Container, Form, Button} from 'react-bootstrap'
 import {login} from '../../reducers/sessionsReducer'
 
 
@@ -22,14 +22,21 @@ function Signup(){
     return (
         <Container id='login-signup-container'>
             <div>
-                <h1>Login</h1>
-            <form>
-                <label>username:</label>
-                <input type='text' onChange={(e) => setUsername(e.target.value)}></input>
-                <label>password:</label>
-                <input type='password' onChange={(e) => setPassword(e.target.value)}></input>
-                <button type='submit' onClick={handleLogin}>login</button>
-            </form>
+                <h1 style={{fontWeight: 'bold'}}>Login</h1>
+            <Form>
+                <Form.Group className="mb-3">
+                    <Form.Label style={{fontWeight: 'bold', fontSize: 'large'}}>username:</Form.Label>
+                    <Form.Control type="username" placeholder="Enter username" onChange={(e) => setUsername(e.target.value)}/>
+                </Form.Group>
+                {/* <input type='text' onChange={(e) => setUsername(e.target.value)}></input> */}
+                <Form.Group className="mb-3">
+                    <Form.Label style={{fontWeight: 'bold', fontSize: 'large'}}>password:</Form.Label>
+                    <Form.Control type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/>
+                </Form.Group>
+                
+                <Button type='submit' onClick={handleLogin}>login</Button>
+                
+            </Form>
             </div>
             
         </Container>

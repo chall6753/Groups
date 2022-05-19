@@ -26,7 +26,7 @@ function Group(){
         let endDate = new Date(group.end_date)
         return (
         <Container className='groupPage'>
-            <Card>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
                 <h1>{group.name}</h1>
                 <h4>Where: {group.location}</h4>
                 <h4>Start Date: {startDate.getMonth()+'-'+startDate.getDate()+'-'+startDate.getFullYear()}</h4>
@@ -34,17 +34,17 @@ function Group(){
                 
                 <p>{group.description}</p>
             </Card>
-            <Card>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
                 <Card.Title>events</Card.Title>
                 {groupEvents.map(event=><EventCard event={event}/>)}
             </Card>  
             
             
-            <Card onClick={()=>navigate(`/group_chats/${group_id}`)}>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=>navigate(`/group_chats/${group_id}`)}>
                 <Card.Title>Chats</Card.Title>
                 <GroupChats chats={chats}/>
             </Card>
-            <Card onClick={()=>navigate(`/pictures/${group_id}`)}>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=>navigate(`/pictures/${group_id}`)}>
                 <h1>Pictures</h1>
             </Card>
             <Card>

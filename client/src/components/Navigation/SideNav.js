@@ -7,27 +7,11 @@ function SideNav(){
     
    
         return(
-            <Navbar bg="light" expand="lg" id="sidenav">
-                <Container >
-                    
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto" id='sidenav'>
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/group_list">Groups</Nav.Link>
-                        <Nav.Link as={Link} to="/events">Events</Nav.Link>
-                        
-                        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown> */}
-                    </Nav>
-                    </Navbar.Collapse>
-                </Container>
-        </Navbar>      
+            <Navbar id="sidenav">
+                        <Nav.Link as={Link} to="/" id="sidenav-item">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/group_list" id="sidenav-item">Groups</Nav.Link>
+                        <Nav.Link as={Link} to="/events" id="sidenav-item">Events</Nav.Link>      
+            </Navbar>      
         )
     }
 

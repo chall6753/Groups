@@ -7,15 +7,12 @@ import {useNavigate} from 'react-router-dom'
 function Groups(){
     const navigate = useNavigate()
     const groups = useSelector(state => state.groups)
-    
 
-    
 
     return (
         
         <Container id='groupContainer'>
             <Card className='groupCard'>
-            
                 <Card.Body>
                     <Button variant="primary" onClick={()=>navigate('/create_group')}>create new group</Button>
                 </Card.Body>

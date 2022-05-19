@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
@@ -27,15 +28,26 @@ code {
 #featureSlider{
   grid-column-start: 1;
   grid-column-end: 6; 
+  border-radius: 25px;
 }
 
 #testimonial{
-  grid-column-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 250px;
+  padding: 10px;
+  margin: 25px;
+  background: rgba(255,255,255,0.5);
 }
 
 #whyGroups{
   grid-column-start: 3;
-  grid-column-end: 5;
+  grid-column-end: 6;
+  height:250px;
+  margin: 25px;
+  padding: 10px;
+  background: rgba(255,255,255,0.5);
+  
 }
 
 .App{
@@ -45,11 +57,27 @@ code {
 
 #header{
   grid-area: 1 / 1 / 2 / 3;
+  
+}
+#header-content{
+  display: grid;
+  grid-template: 1fr / 1fr ;
+  font-weight: bold;
+  
 }
 
 #sidenav{
   display:flex;
   flex-direction: column;
+  height: fit-content;
+  background: rgba(255,255,255,0.5);
+  font-weight: bold;
+  color: black;
+}
+#sidenav-item{
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
 
 #groupContainer{
@@ -60,6 +88,8 @@ code {
 .groupCard{
   width: 300px;
   height: auto;
+  margin: 10px;
+  background: rgba(255,255,255,0.5);
 }
 .thumbnailCard{
   width: 250px;

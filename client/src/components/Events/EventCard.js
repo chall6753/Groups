@@ -8,13 +8,16 @@ function EventCard({event}){
     const startDate = new Date(event.start_date)
 
     return (
-        <Card>
+        <Card style={{margin:'15px'}}>
             <Card.Body onClick={()=> navigate(`/events/${event.id}`)}>
-              <Card.Title >{event.name}</Card.Title> 
-              <Card.Text>Date: {startDate.toLocaleDateString()}</Card.Text> 
-              <Card.Text>Time: {startDate.toLocaleTimeString()}</Card.Text>
-              <Card.Text>Location: {event.location}</Card.Text> 
-              <Card.Text>Descritpion: {event.description}</Card.Text> 
+                <Card.Title >{event.name}</Card.Title> 
+                <Card.Text>
+                    Date: {startDate.toLocaleDateString()}<br/>
+                    Time: {startDate.toLocaleTimeString()}<br/>
+                    Location: {event.location}<br/>
+                    Descritpion: {event.description}<br/>
+                </Card.Text> 
+              
             </Card.Body>
             
 

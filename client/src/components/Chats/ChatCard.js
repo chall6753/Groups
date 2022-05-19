@@ -30,7 +30,7 @@ function ChatCard({chat}){
       toggleShowEditForm()
     }
     return (
-        <div className="container mt-5" key={chat.id}>
+        <div className="container mt-3" key={chat.id}>
             <div className="row  d-flex justify-content-center">
                 <div className="col-md-8">
                     <div className="card p-3">
