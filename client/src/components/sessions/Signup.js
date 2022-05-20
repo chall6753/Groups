@@ -39,7 +39,9 @@ function Signup(){
                 res.json().then(user => dispatch({type: "login", payload: user}))
                 navigate('/')
             }
-            else {console.log('error')}
+            else {
+                res.json().then(res=> window.alert(res))
+            }
         })
     }
 

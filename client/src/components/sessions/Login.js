@@ -28,7 +28,7 @@ function Signup(){
                     <Form.Label style={{fontWeight: 'bold', fontSize: 'large'}}>username:</Form.Label>
                     <Form.Control type="username" placeholder="Enter username" onChange={(e) => setUsername(e.target.value)}/>
                 </Form.Group>
-                {/* <input type='text' onChange={(e) => setUsername(e.target.value)}></input> */}
+                
                 <Form.Group className="mb-3">
                     <Form.Label style={{fontWeight: 'bold', fontSize: 'large'}}>password:</Form.Label>
                     <Form.Control type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/>
