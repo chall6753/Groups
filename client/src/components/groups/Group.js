@@ -16,9 +16,9 @@ function Group(){
     const navigate = useNavigate()
     const group = useSelector(state => state.groups.find((group)=>group.id == group_id))
     const groupEvents = useSelector(state => state.events.filter((event)=>event.group_id == group_id)).slice(0,3)
-    const chats = useSelector(state => state.chats)
+    const chats = useSelector(state => state.chats).filter((chat)=> chat.group?.id == group_id)
 
-    console.log(group)
+    console.log(groupEvents)
     
     
     if (group != undefined){
@@ -34,7 +34,7 @@ function Group(){
                 <p>{group.description}</p>
                 {group.can_modify_group?<Button onClick={()=> dispatch(deleteGroup(group_id, navigate))}>Delete</Button>:null}
             </Card>
-            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=>navigate(`/events`)}>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=>navigate(`/group_events/${group_id}`)}>
                 <h1>Events</h1>
                 {groupEvents.map(event=><EventCard event={event}/>)}
             </Card>  

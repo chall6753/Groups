@@ -14,8 +14,7 @@ function CreateChat({group_id =null, event_id=null}){
     return (
         <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Enter chat</Form.Label>
-                <Form.Control as="textarea" rows={3} value={chat} onChange={(e)=> setChat(e.target.value)} />
+                <Form.Control as="textarea" placeholder="enter chat"rows={3} value={chat} onChange={(e)=> setChat(e.target.value)} />
             </Form.Group>
 
             

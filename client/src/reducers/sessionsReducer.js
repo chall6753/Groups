@@ -23,6 +23,9 @@ export const login = (username, password, navigate) => {
                     })
                     navigate('/')
                 }
+                else{
+                    res.json().then(res=> window.alert(res.errors))
+                }
             })
             
     }    
@@ -62,7 +65,7 @@ const initialState = {
     first_name: '', 
     last_name: '', 
     username: '', 
-  
+    
 }
 
 export default function sessionsReducer(state = initialState, action) {
@@ -73,7 +76,7 @@ export default function sessionsReducer(state = initialState, action) {
         case 'logout':
         console.log('logged out')
         return initialState
-  
+        
       default:
         return state;
     }

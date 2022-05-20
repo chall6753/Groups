@@ -15,6 +15,7 @@ function GroupChatsPage(){
     if (chats != ''){
         return (
         <Container>
+            <h1>Group Chat Page</h1>
             <CreateChat group_id={group_id} />
             <div>
                 {groupChats.map(chat=> {

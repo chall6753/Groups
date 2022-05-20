@@ -8,9 +8,22 @@ class Api::EventsController < ApplicationController
     render json: @events
   end
 
-  # GET /events/1
   def show
-    render json: @event
+    event = Event.find(params[:id])
+    render json: event
+  end
+
+  # GET /your_groups_events
+  def show_your_groups_events
+    your_groups = current_user.memberships
+    your_groups_events = []
+    your_groups.each do |group|
+      group.events.each do |event|
+        your_groups_events << event
+      end
+    end
+    
+    render json: your_groups_events
   end
 
   # POST /events

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users
     resources :pictures
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+    get '/your_groups_events', to: "events#show_your_groups_events"
     post "uploads/prepare", to: "uploads#prepare"
     post "/login", to: 'sessions#create'
     get "/logout", to: 'sessions#destroy'

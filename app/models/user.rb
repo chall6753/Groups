@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :created_groups, class_name: 'Group'
   has_many :chats
   has_many :pictures
+
+  validates :username, presence: true
+
 end

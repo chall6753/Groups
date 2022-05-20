@@ -18,11 +18,12 @@
   
   export const updateEventChats = (chat) => {
     return async (dispatch) =>{
-     
       
       dispatch({type: 'updateEventChats', payload: chat})
     }
   }
+
+  
   //reducers- where we change state
   
   const initialState = []
@@ -38,6 +39,7 @@
           newState.chats.push(action.payload)
           console.log(newState)
           return newState
+        
         default:
           return state;
       }

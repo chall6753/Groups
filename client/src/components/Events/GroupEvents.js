@@ -9,13 +9,14 @@ import CreateEvent from './CreateEvent'
 function GroupEvents(){
     const group_id = useParams().id
     const groupEvents = useSelector(state => state.events.filter((event)=>event.group_id == group_id))
-    
-
+    const group = useSelector(state => state.groups.find((group) => group.id == group_id))
+    console.log(group)
    if (groupEvents !=undefined){
        
         return (
         <Container>
             <CreateEvent group_id={group_id}/>
+            <h1>{group.name} Events</h1>
             {groupEvents.map(event=><EventCard event={event}/>)}
             
         </Container>

@@ -8,9 +8,16 @@ import ChatCard from '../Chats/ChatCard'
 const HomeLoggedIn = () => {
     const currentUser = useSelector(state => state.session)
     const groups = useSelector(state => state.groups)
-    const events = useSelector(state => state.events).filter((event)=> event.user_id == currentUser.id).slice(0,4)
     const chats = useSelector(state => state.chats).filter((chat)=> chat.user_id == currentUser.id).slice(0,4)
     const navigate = useNavigate()
+    const [yourGroupsEvents, setYourGroupsEvents] = useState([])
+    console.log(chats)
+
+    useEffect(()=>{
+        fetch('/api/your_groups_events')
+        .then(res=>res.json())
+        .then(res=> setYourGroupsEvents(res))
+    },[])
 
     if (groups.error){
         return <p>loading...</p>
@@ -39,11 +46,12 @@ const HomeLoggedIn = () => {
             </Card>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=> navigate(`/events`)}>
                 <h1>Upcoming Events</h1>
-                {events.map((event) => {
+                {yourGroupsEvents.map((event) => {
                     return(
                         <Card onClick={()=>navigate(`/events/${event.id}`)} style={{margin:'10px'}}>
                             <Card.Body>
-                                <Card.Title>{event.name}</Card.Title>
+                                <h5>Group: {event.group.name}</h5>
+                                <h5>Event: {event.name}</h5>
                                 <Card.Text>
                                     where: {event.location}<br/>when: {event.start_time}
                                 </Card.Text>

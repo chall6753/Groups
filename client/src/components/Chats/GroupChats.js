@@ -15,7 +15,7 @@ function GroupChats({chats}){
     if (chats != ''){
         return (
         <Container>
-            {/* <CreateChat group_id={group_id} /> */}
+            
             <div>
                 {groupChats.map(chat=> {
                     return <ChatCard chat={chat} />

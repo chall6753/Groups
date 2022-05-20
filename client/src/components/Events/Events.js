@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container} from 'react-bootstrap'
 import {useSelector} from 'react-redux'
 import EventCard from './EventCard'
@@ -6,13 +6,19 @@ import EventCard from './EventCard'
 
 function Events(){
 
-        const events = useSelector(state => state.events)
-        console.log(events)
+        // const events = useSelector(state => state.events)
+        const [yourEvents, setYourEvents] = useState([])
+
+        useEffect(()=>{
+            fetch('/api/your_groups_events')
+            .then(res=>res.json())
+            .then(res=> setYourEvents(res))
+        },[])
+
+        
     return (
         <Container >
-            
-            {events.map(event=><EventCard event={event}/>)}
-            
+            {yourEvents.map(event=><EventCard event={event}/>)}
         </Container>
     )
 }

@@ -26,7 +26,7 @@ function App() {
    const currentUser = useSelector(state => state.session)
   useEffect(()=>{dispatch(setCurrentUser())},[]);
   useEffect(()=>{dispatch(showGroups())},[currentUser]);
-  useEffect(()=>{dispatch(showEvents())},[]);
+  // useEffect(()=>{dispatch(showEvents())},[]);
   useEffect(()=>{dispatch(showChats())},[])
   
  
