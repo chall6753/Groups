@@ -19,7 +19,7 @@ class Api::UsersController < ApplicationController
       session[:user_id] = user.id
       render json: user, status: :created
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
     if @user.update(user_params)
       render json: @user
     else
-      render json: {errors: @user.errors}, status: :unprocessable_entity
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 

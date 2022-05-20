@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :chats
   has_many :pictures
 
-  validates :username, presence: true
+  validates :username, :first_name, :last_name, :email, presence: true
+  validates :username, :email, uniqueness: true
 
 end
