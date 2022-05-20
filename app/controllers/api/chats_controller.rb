@@ -12,6 +12,18 @@ class Api::ChatsController < ApplicationController
     render json: @chat
   end
 
+  # GET /your_groups_chats
+  def show_your_groups_chats
+    your_groups = current_user.memberships
+    your_groups_chats = []
+    your_groups.each do |group|
+      group.chats.each do |chat|
+        your_groups_chats << chat
+      end
+    end
+    your_groups_chats = your_groups_chats.sort_by{|chat| chat.updated_at}.reverse
+    render json: your_groups_chats
+  end
   # POST /chats
   def create
     

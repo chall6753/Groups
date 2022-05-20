@@ -11,6 +11,7 @@ const HomeLoggedIn = () => {
     const chats = useSelector(state => state.chats).filter((chat)=> chat.user_id == currentUser.id).slice(0,4)
     const navigate = useNavigate()
     const [yourGroupsEvents, setYourGroupsEvents] = useState([])
+    const [yourGroupsChats, setYourGroupsChats] = useState([])
     console.log(chats)
 
     useEffect(()=>{
@@ -18,13 +19,19 @@ const HomeLoggedIn = () => {
         .then(res=>res.json())
         .then(res=> setYourGroupsEvents(res))
     },[])
-
+    
+    useEffect(()=>{
+        fetch('/api/your_groups_chats')
+        .then(res=>res.json())
+        .then(res=> setYourGroupsChats(res))
+    },[])
+    
     if (groups.error){
         return <p>loading...</p>
     }
     else{
         const yourGroups = groups.filter((group) => group.is_member).slice(0,4)
-        
+        console.log(yourGroupsEvents)
         return (
         <Container className='homeLoggedIn'>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
@@ -32,7 +39,7 @@ const HomeLoggedIn = () => {
                 {yourGroups.map((group) => {
                     let startDate = new Date(group.start_date)
                    return(
-                    <Card onClick={()=>navigate(`/groups/${group.id}`)} style={{margin:'10px'}}>
+                    <Card onClick={()=>navigate(`/groups/${group.id}`)} style={{margin:'10px', cursor: 'pointer'}}>
                         <Card.Body>
                             <Card.Title>{group.name}</Card.Title>
                             <Card.Text>
@@ -44,16 +51,18 @@ const HomeLoggedIn = () => {
                    ) 
                 })}
             </Card>
-            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=> navigate(`/events`)}>
-                <h1>Upcoming Events</h1>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} >
+                <h1 style={{cursor: 'pointer'}}onClick={()=> navigate(`/events`)}>Upcoming Events</h1>
                 {yourGroupsEvents.map((event) => {
+                    let startDate = new Date(event.start_date)
                     return(
-                        <Card onClick={()=>navigate(`/events/${event.id}`)} style={{margin:'10px'}}>
+                        <Card onClick={()=>navigate(`/events/${event.id}`)} style={{margin:'10px', cursor: 'pointer'}}>
                             <Card.Body>
                                 <h5>Group: {event.group.name}</h5>
                                 <h5>Event: {event.name}</h5>
                                 <Card.Text>
-                                    where: {event.location}<br/>when: {event.start_time}
+                                    where: {event.location}<br/>
+                                    when: {startDate.getMonth()+'-'+startDate.getDate()+'-'+startDate.getFullYear() }
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -62,7 +71,7 @@ const HomeLoggedIn = () => {
             </Card>
             <Card style={{margin:'10px',background: 'rgba(255,255,255,0.5)'}}>
                 <h1>Recent Chats</h1>
-                {chats.map((chat) => <ChatCard chat={chat}/>) }
+                {yourGroupsChats.slice(0,4).map((chat) => <ChatCard chat={chat}/>) }
             </Card>
         </Container>
     )
