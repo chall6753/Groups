@@ -55,29 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_024019) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "list_items", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "list_id", null: false
-    t.string "name"
-    t.text "note"
-    t.boolean "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_list_items_on_list_id"
-    t.index ["user_id"], name: "index_list_items_on_user_id"
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
-    t.string "name"
-    t.text "descritpion"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_lists_on_group_id"
-    t.index ["user_id"], name: "index_lists_on_user_id"
-  end
-
   create_table "pictures", force: :cascade do |t|
     t.string "thumbnail"
     t.string "cloudinary_public_id"
@@ -112,10 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_024019) do
   add_foreign_key "events", "groups"
   add_foreign_key "events", "users"
   add_foreign_key "groups", "users"
-  add_foreign_key "list_items", "lists"
-  add_foreign_key "list_items", "users"
-  add_foreign_key "lists", "groups"
-  add_foreign_key "lists", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
