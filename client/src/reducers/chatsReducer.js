@@ -80,18 +80,18 @@ export const createChat = (comment, group_id, event_id = null) => {
   export default function chatsReducer(state = initialState, action) {
       switch (action.type) {
         case "createChat":
-          console.log(action.payload)
+          
           
           return [action.payload,...state]
         case "showChats":
 
           return action.payload
           case "deleteChat":
-            console.log(state)
+            
             return state.filter(chat=> chat.id != action.payload)
 
         case 'updateChat':
-          console.log(state)
+          
           return state
         default:
           return state;

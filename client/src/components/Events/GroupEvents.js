@@ -10,7 +10,7 @@ function GroupEvents(){
     const group_id = useParams().id
     const groupEvents = useSelector(state => state.events.filter((event)=>event.group_id == group_id))
     const group = useSelector(state => state.groups.find((group) => group.id == group_id))
-    console.log(group)
+    console.log(groupEvents)
    if (groupEvents !=undefined){
        
         return (

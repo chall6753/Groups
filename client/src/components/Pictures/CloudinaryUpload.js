@@ -21,6 +21,7 @@ function CloudinaryUpload({preset,handleUpload,buttonText}) {
         cloudName: "dxvcz3scf",
         uploadPreset: preset,
         prepareUploadParams: (cb, params) => {
+          console.log("params", cb)
           params = [].concat(params);  //params can be a single object or an array of objects
           Promise.all(params.map((body) => {
             return fetch("/api/uploads/prepare", {

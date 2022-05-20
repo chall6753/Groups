@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
 import {Card, Button} from "react-bootstrap"
 import {useSelector, useDispatch} from 'react-redux'
 import {deleteChat, updateChat} from '../../reducers/chatsReducer'
@@ -12,6 +13,7 @@ function ChatCard({chat}){
     const currentUser = useSelector(state=> state.session)
     const dispatch = useDispatch()
     const updatedAt = new Date(chat.updated_at).toLocaleString()
+    const navigate = useNavigate()
     useEffect(()=>{
       setUpdatedComment(chat.comment)
     },[chat])
@@ -30,7 +32,7 @@ function ChatCard({chat}){
       toggleShowEditForm()
     }
     return (
-        <div className="container mt-3" key={chat.id}>
+        <div className="container mt-3" key={chat.id} onClick={()=>navigate(`/group_chats/${chat.group.id}`)} style={{cursor: 'pointer'}}>
             <div className="row  d-flex justify-content-center">
                 <div className="col-lg-12">
                     <div className="card p-3">
