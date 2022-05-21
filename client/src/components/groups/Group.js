@@ -6,6 +6,7 @@ import GroupChats from '../Chats/GroupChats'
 import {deleteGroup} from '../../reducers/groupsReducer'
 import CreateEvent from './../Events/CreateEvent'
 import EventCard from './../Events/EventCard'
+import SlideShow from "../Pictures/SlideShow";
 
 
 
@@ -46,10 +47,11 @@ function Group(){
             </Card>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} onClick={()=>navigate(`/pictures/${group_id}`)}>
                 <h1>Pictures</h1>
+                <SlideShow/>
             </Card>
-            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
+            <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center'}}>
                 <h1>Group Members</h1>
-                {group.members.map((member)=> <Card>{member.username}</Card>)}
+                {group.members.map((member)=> <Card style={{width: '200px', margin: '5px', fontWeight: 'bold'}}>{member.username}</Card>)}
             </Card>
             
             
