@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from "react";
 import {Card, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {showGroups} from '../../reducers/groupsReducer'
 
 
 
@@ -9,6 +11,7 @@ function GroupCard({group}){
     const [isMember, setIsMember] = useState(group.is_member)
     const [password, setPassword] = useState('')
     const [showJoinForm, setShowJoinForm] = useState(false)
+    const dispatch= useDispatch()
     console.log(group)
 
     const joinGroupForm = ()=>{
@@ -32,13 +35,17 @@ function GroupCard({group}){
         })
         .then(res=>{
             if (res.ok){
+                dispatch(showGroups())
                 setIsMember(true)
                 setShowJoinForm(false)
+                group.is_member = true
+                
             }
             else{window.alert('wrong password')}
         })
     }
 
+    
     return (
         <Card className='groupCard'>
             <Card.Img variant='top' src={group.group_pic_url} style={{width: '75%', height: 'auto', margin: '10px'}}/>
@@ -48,7 +55,7 @@ function GroupCard({group}){
                 <Card.Text>
                 {group.description}
                 </Card.Text>
-                {isMember?<Button variant="primary" onClick={()=> navigate(`/groups/${group.id}`)}>Go to group</Button>:<Button onClick={()=> setShowJoinForm(!showJoinForm) }>Join Group</Button>}
+                {isMember?<Button variant="primary" onClick={()=> navigate(`/groups/${group.id}`)}>Go to group</Button>:showJoinForm?null:<Button onClick={()=> setShowJoinForm(!showJoinForm) }>Join Group</Button>}
                 {showJoinForm?joinGroupForm():null}
             </Card.Body>
         </Card>

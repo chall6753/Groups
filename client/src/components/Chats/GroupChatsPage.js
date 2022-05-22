@@ -9,7 +9,7 @@ function GroupChatsPage(){
     const chats = useSelector(state => state.chats)
     const group_id = useParams().id
     console.log(chats)
-    const groupChats = chats.filter((chat) => chat.group?.id == group_id)
+    const groupChats = chats.filter((chat) => chat.group?.id == group_id && chat.event == null)
     
     console.log(groupChats)
     if (chats != ''){

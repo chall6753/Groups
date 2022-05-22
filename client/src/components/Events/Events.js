@@ -18,7 +18,8 @@ function Events(){
         
     return (
         <Container >
-            {yourEvents.map(event=><EventCard event={event}/>)}
+
+            {yourEvents.map(event=><EventCard event={event} showGroup={true}/>)}
         </Container>
     )
 }

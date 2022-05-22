@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update destroy ]
+  before_action :set_user, only: %i[ show update destroy leave_group]
 
   # GET /users
   def index
@@ -47,12 +47,22 @@ class Api::UsersController < ApplicationController
     else
         render json: {errors: "Incorrect password"}, status: :unauthorized
     end
-     
+  end
+
+  # PATCH /users/leave_group
+  def leave_group
+    
+    membership = @user.user_groups.find_by(group_id: params[:group_id])
+    
+    @user.chats.find_by(group_id: params[:group_id])&.destroy
+    
+    
+    membership.destroy
   end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # Only allow a list of trusted parameters through.

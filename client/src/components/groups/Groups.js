@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import GroupCard from './GroupCard'
 import {Container, Button, Card} from 'react-bootstrap'
@@ -7,9 +7,17 @@ import {useNavigate} from 'react-router-dom'
 function Groups(){
     const navigate = useNavigate()
     const groups = useSelector(state => state.groups)
-    const yourGroups = groups.filter((group)=> group.is_member == true)
-    const otherGroups = groups.filter((group)=> group.is_member == false)
+    const [yourGroups,setYourGroups] = useState([])
+    const [otherGroups, setOtherGroups] = useState([])
 
+    useEffect(()=>{
+        setYourGroups(groups.filter((group)=> group.is_member == true))
+        setOtherGroups(groups.filter((group) => group.is_member == false))
+    }, [groups])
+
+    
+    console.log(groups)
+    console.log(otherGroups)
     return (
         <Container>
             <h1>Your Groups</h1>

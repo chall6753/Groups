@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Card} from 'react-bootstrap'
+import {Container, Card, Button} from 'react-bootstrap'
 import {useParams, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import CreateChat from '../Chats/CreateChat';
@@ -23,6 +23,7 @@ function Event(){
         console.log(event)
        return (
         <Container>
+            <Button onClick={()=>navigate(`/groups/${event.group.id}`)} style={{margin: '5px'}}>Back to Group</Button>
             <Card>
                 <Card.Body>
                 <Card.Title >{event.name}</Card.Title> 
@@ -34,7 +35,7 @@ function Event(){
                 </Card.Body>
             </Card>
             <h1>Event Chats</h1>
-            <CreateChat event_id={eventId}/>
+            <CreateChat event_id={eventId} group_id={event.group_id}/>
             <EventChats chats={eventChats}/>
         </Container>
     ) 

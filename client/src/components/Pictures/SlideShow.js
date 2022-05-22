@@ -21,7 +21,7 @@ function SlideShow(){
             {pics.map((pic)=>{
                 console.log(pic)
                 return (
-                    <Carousel.Item>
+                    <Carousel.Item key={pic.id}>
                         <img
                         src={pic.thumbnail}
                         width="200"

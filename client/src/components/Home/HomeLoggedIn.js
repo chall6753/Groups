@@ -12,8 +12,7 @@ const HomeLoggedIn = () => {
     const navigate = useNavigate()
     const [yourGroupsEvents, setYourGroupsEvents] = useState([])
     const [yourGroupsChats, setYourGroupsChats] = useState([])
-    console.log(chats)
-
+    
     useEffect(()=>{
         fetch('/api/your_groups_events')
         .then(res=>res.json())
@@ -39,7 +38,7 @@ const HomeLoggedIn = () => {
                 {yourGroups.map((group) => {
                     let startDate = new Date(group.start_date)
                    return(
-                    <Card onClick={()=>navigate(`/groups/${group.id}`)} style={{margin:'10px', cursor: 'pointer'}}>
+                    <Card onClick={()=>navigate(`/groups/${group.id}`)} style={{margin:'10px', cursor: 'pointer'}} key={group.id}>
                         <Card.Body>
                             <Card.Title>{group.name}</Card.Title>
                             <Card.Text>
@@ -56,7 +55,7 @@ const HomeLoggedIn = () => {
                 {yourGroupsEvents.map((event) => {
                     let startDate = new Date(event.start_date)
                     return(
-                        <Card onClick={()=>navigate(`/events/${event.id}`)} style={{margin:'10px', cursor: 'pointer'}}>
+                        <Card onClick={()=>navigate(`/events/${event.id}`)} style={{margin:'10px', cursor: 'pointer'}} key={event.id}>
                             <Card.Body>
                                 <h5>Group: {event.group.name}</h5>
                                 <h5>Event: {event.name}</h5>
@@ -71,7 +70,7 @@ const HomeLoggedIn = () => {
             </Card>
             <Card style={{margin:'10px',background: 'rgba(255,255,255,0.5)'}}>
                 <h1>Recent Chats</h1>
-                {yourGroupsChats.slice(0,4).map((chat) => <ChatCard chat={chat}/>) }
+                {yourGroupsChats.slice(0,4).map((chat) => <ChatCard key={chat.id} chat={chat}/>) }
             </Card>
         </Container>
     )

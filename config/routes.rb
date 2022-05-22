@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :users
     resources :pictures
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+    
     get '/your_groups_chats', to: 'chats#show_your_groups_chats'
     get '/your_groups_events', to: "events#show_your_groups_events"
     post "uploads/prepare", to: "uploads#prepare"
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     post "/signup", to: 'users#create'
     get '/currentUser', to: 'sessions#auth'
     post "/users/join_group", to: "users#join_group"
+    patch '/leave_group', to: "users#leave_group"
   end
  
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
