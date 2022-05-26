@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import GroupChats from '../Chats/GroupChats'
 import {deleteGroup, showGroups} from '../../reducers/groupsReducer'
 import {showChats} from '../../reducers/chatsReducer'
+import { showEvents } from "../../reducers/eventsReducer";
 import CreateEvent from './../Events/CreateEvent'
 import EventCard from './../Events/EventCard'
 import SlideShow from "../Pictures/SlideShow";
@@ -28,6 +29,7 @@ function Group(){
         .then(res=> {if (res.ok){
             dispatch(showGroups())
             dispatch(showChats())
+            dispatch(showEvents())
             
         }}).then(()=>navigate('/'))
     } 

@@ -15,7 +15,7 @@ function GroupEvents(){
         <Container>
             <CreateEvent group_id={group_id}/>
             <h1>{group.name} Events</h1>
-            {groupEvents.map(event=><EventCard event={event}/>)}
+            {groupEvents.map(event=><EventCard key={group.id} event={event}/>)}
         </Container>
         )}
 }

@@ -55,6 +55,8 @@ class Api::UsersController < ApplicationController
     membership = @user.user_groups.find_by(group_id: params[:group_id])
     
     @user.chats.find_by(group_id: params[:group_id])&.destroy
+    @user.created_events.find_by(group_id: params[:group_id])&.destroy
+    @user.pictures.find_by(group_id: params[:group_id])&.destroy
 
     membership.destroy
   end
