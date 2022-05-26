@@ -18,7 +18,7 @@ function GroupChatsPage(){
             <CreateChat group_id={group_id} />
             <div>
                 {groupChats.map(chat=> {
-                    return <ChatCard chat={chat} />
+                    return <ChatCard key={chat.id} chat={chat} />
                 })}
             </div>
         </Container>

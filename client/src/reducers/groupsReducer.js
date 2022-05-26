@@ -37,13 +37,10 @@ export const showGroups = ()=> {
       fetch('/api/groups')
       .then(res => {
         if(res.ok){
-          console.log(res)
+          
           res.json().then(groups => dispatch({type: 'showGroups', payload: groups}))
         }
-        else{
-          console.log("yeet")
-          
-        }
+        
       })
     }
 }
@@ -67,16 +64,7 @@ export const deleteGroup = (group_id, navigate)=> {
       })
     }
 }
-// export const joinGroup = () => {
 
-//   return async (dispatch) => {
-//     fetch(`groups/join/${id}`, {
-//       method: 'POST', 
-//       headers: {"Content-Type": 'application/json'}
-//     })
-//     .then(res=>res.json()).then(groups)
-//   }
-// }
 //reducers- where we change state
 
 const initialState = []
@@ -84,8 +72,7 @@ const initialState = []
 export default function groupsReducer(state = initialState, action) {
     switch (action.type) {
       case "createGroup":
-        console.log(action.payload)
-        
+
         return [...state, action.payload]
       case "showGroups":
         

@@ -33,7 +33,7 @@ function Group(){
             
         }}).then(()=>navigate('/'))
     } 
-    console.log(chats)
+
     if (group != undefined){
         let startDate = new Date(group.start_date)
         let endDate = new Date(group.end_date)
@@ -49,7 +49,7 @@ function Group(){
             </Card>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} >
                 <h1 onClick={()=>navigate(`/group_events/${group_id}`)} style={{cursor: 'pointer'}}>Events</h1>
-                {groupEvents.map(event=><EventCard event={event}/>)}
+                {groupEvents.map(event=><EventCard key={event.id} event={event}/>)}
             </Card>  
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} >
                 <h1 onClick={()=>navigate(`/group_chats/${group_id}`)} style={{cursor: 'pointer'}}>Chats</h1>
@@ -61,7 +61,7 @@ function Group(){
             </Card>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center'}}>
                 <h1>Group Members</h1>
-                {group.members.map((member)=> <Card style={{width: '200px', margin: '5px', fontWeight: 'bold'}}>{member.username}</Card>)}
+                {group.members.map((member)=> <Card key={member.id} style={{width: '200px', margin: '5px', fontWeight: 'bold'}}>{member.username}</Card>)}
             </Card> 
         </Container>
         )

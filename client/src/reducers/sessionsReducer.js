@@ -37,7 +37,7 @@ export const setCurrentUser = () => {
         fetch('/api/currentUser')
             .then(res => {
                 if (res.ok){
-                    console.log('success')
+
                     res.json().then(user => dispatch({type: "login", payload: user}))
                 }     
             })

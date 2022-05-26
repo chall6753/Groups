@@ -8,8 +8,8 @@ function EventChats({chats}){
             <Container>
                 <div>
                     {chats.map(chat=> {
-                        console.log(chat)
-                        return <ChatCard chat={chat} />
+                        
+                        return <ChatCard key={chat.id} chat={chat} />
                     })}
                 </div>
             </Container>
