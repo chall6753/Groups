@@ -4,15 +4,12 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {showGroups} from '../../reducers/groupsReducer'
 
-
-
 function GroupCard({group}){
     const navigate = useNavigate();
     const [isMember, setIsMember] = useState(group.is_member)
     const [password, setPassword] = useState('')
     const [showJoinForm, setShowJoinForm] = useState(false)
     const dispatch= useDispatch()
-    console.log(group)
 
     const joinGroupForm = ()=>{
         return (
@@ -23,7 +20,6 @@ function GroupCard({group}){
             </form>
         )
     }
-
     const handleJoinGroup = ()=>{
         fetch(`/api/users/join_group`, {
             method: 'POST',
@@ -38,14 +34,12 @@ function GroupCard({group}){
                 dispatch(showGroups())
                 setIsMember(true)
                 setShowJoinForm(false)
-                group.is_member = true
-                
+                // group.is_member = true
             }
             else{window.alert('wrong password')}
         })
     }
 
-    
     return (
         <Card className='groupCard'>
             <Card.Img variant='top' src={group.group_pic_url} style={{width: '75%', height: 'auto', margin: '10px'}}/>

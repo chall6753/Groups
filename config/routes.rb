@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :pictures
 
   namespace :api do
-    get 'uploads/prepare'
+    get '/uploads/prepare'
     resources :chats
     resources :list_items
     resources :lists
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     
     get '/your_groups_chats', to: 'chats#show_your_groups_chats'
     get '/your_groups_events', to: "events#show_your_groups_events"
-    post "uploads/prepare", to: "uploads#prepare"
+    post "/uploads/prepare", to: "uploads#prepare"
     post "/login", to: 'sessions#create'
     get "/logout", to: 'sessions#destroy'
     post "/signup", to: 'users#create'

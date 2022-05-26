@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Form, Button} from 'react-bootstrap'
+import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {createEvent} from '../../reducers/eventsReducer'
-
 
 function CreateEvent({group_id}){
     const [name,setName] = useState('')
@@ -11,7 +9,6 @@ function CreateEvent({group_id}){
     const [description, setDescritpion] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
-   
     const navigate = useNavigate()
     const dispatch =  useDispatch()
     
@@ -19,9 +16,7 @@ function CreateEvent({group_id}){
         e.preventDefault();
         dispatch(createEvent(name, location, description, startDate, endDate, group_id, navigate)) 
     }
-
     return (
-        
         <div>
             <h1>Create Event</h1>
             <form>
@@ -35,12 +30,9 @@ function CreateEvent({group_id}){
                 <input type='datetime-local' onChange={(e) => setStartDate(e.target.value)}></input>
                 <label>End Date:</label>
                 <input type='datetime-local' onChange={(e) => setEndDate(e.target.value)}></input>
-                
                 <button type='submit' onClick={handleCreateEvent}>Create Event</button>
             </form>
         </div>
-            
-        
     )
 }
 

@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 function LogoutButton(){
     const dispatch= useDispatch()
     const currentUser = useSelector(state => state.session)
-    console.log(currentUser.id)
+
     function handleLogout(e){
         e.preventDefault();
         dispatch(logout())
@@ -13,19 +13,14 @@ function LogoutButton(){
 
     if (currentUser.id){
        return (
-        <>
+        <div>
             <button onClick={handleLogout}>logout</button>
-        </>   
-    ) 
+        </div>   
+        ) 
     }
     else{
-        return(
-            <></>
-        )
-    }
-
-
-    
+        return null
+    } 
 }
 
 export default LogoutButton

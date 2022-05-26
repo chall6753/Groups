@@ -6,16 +6,14 @@ import {logout} from '../../reducers/sessionsReducer';
 import LogoutButton from '../sessions/LogoutButton'
 
 function Header(){
-const currentUser = useSelector(state => state.session)
-const dispatch = useDispatch()
-const navigate = useNavigate()
-
-const handleLogout = (e) => {
-    e.preventDefault()
-    dispatch(logout())
-    navigate('/')
-    
-}
+    const currentUser = useSelector(state => state.session)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout = (e) => {
+        e.preventDefault()
+        dispatch(logout())
+        navigate('/') 
+    }
     return(
         <Navbar id='header'>
             <Container id='header-content'>
@@ -26,13 +24,9 @@ const handleLogout = (e) => {
                     {currentUser.id ==''? <Nav.Link as={Link} to="/login">Login</Nav.Link>: <Nav.Link onClick={handleLogout}>Logout</Nav.Link>}
                     {currentUser.id ==''? <Nav.Link as={Link} to="/signup">Signup</Nav.Link>: null}
                     </Nav>   
-                </div>
-                  
+                </div>   
             </Container>
-            
-
         </Navbar>
-
     )
 }
 

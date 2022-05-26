@@ -1,8 +1,7 @@
 import React, {useState,useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-
-import {Container, Card, NavLink} from 'react-bootstrap'
+import {Container, Card} from 'react-bootstrap'
 import ChatCard from '../Chats/ChatCard'
 
 const HomeLoggedIn = () => {
@@ -18,19 +17,16 @@ const HomeLoggedIn = () => {
         .then(res=>res.json())
         .then(res=> setYourGroupsEvents(res))
     },[])
-    
     useEffect(()=>{
         fetch('/api/your_groups_chats')
         .then(res=>res.json())
         .then(res=> setYourGroupsChats(res))
     },[])
-    
     if (groups.error){
         return <p>loading...</p>
     }
     else{
         const yourGroups = groups.filter((group) => group.is_member).slice(0,4)
-        console.log(yourGroupsEvents)
         return (
         <Container className='homeLoggedIn'>
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}}>
@@ -73,9 +69,7 @@ const HomeLoggedIn = () => {
                 {yourGroupsChats.slice(0,4).map((chat) => <ChatCard key={chat.id} chat={chat}/>) }
             </Card>
         </Container>
-    )
-    }
-    
+    )}
 }
 
 export default HomeLoggedIn

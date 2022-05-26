@@ -15,9 +15,6 @@ function Groups(){
         setOtherGroups(groups.filter((group) => group.is_member == false))
     }, [groups])
 
-    
-    console.log(groups)
-    console.log(otherGroups)
     return (
         <Container>
             <h1>Your Groups</h1>
@@ -34,14 +31,12 @@ function Groups(){
             </Container>
             <h1>Other Groups</h1>
             <Container id='groupContainer'>
-                    {otherGroups.map((group)=> {
-                        return <GroupCard key={group.id} group={group}/>
-                        })
-                    }   
+                {otherGroups.map((group)=> {
+                    return <GroupCard key={group.id} group={group}/>
+                    })
+                }   
             </Container>
         </Container>
-        
-        
     )
 }
 

@@ -1,12 +1,9 @@
 import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {Container, Form, Button} from 'react-bootstrap'
 import {createGroup} from '../../reducers/groupsReducer'
 import CloudinaryUpload from "../Pictures/CloudinaryUpload";
-
-
-
 
 function CreateGroup(){
     const [name,setName] = useState('')
@@ -26,10 +23,9 @@ function CreateGroup(){
         dispatch(createGroup(name, location, description, startDate, endDate, password, passwordConfirmation, groupPicUrl, cloudinaryPublicId, navigate))   
     }
     const handleUpload = (result) => {
-        console.log(result)
-          setGroupPicUrl(result.info.secure_url) 
-          setCloudinaryPublicId(result.info.public_id) 
-      }
+        setGroupPicUrl(result.info.secure_url) 
+        setCloudinaryPublicId(result.info.public_id) 
+    }
     return (
         <Container style={{width: '500px'}}>
             <h1>Create Group!</h1>
@@ -46,7 +42,6 @@ function CreateGroup(){
                     <Form.Label style={{fontWeight: 'bold', fontSize: 'large'}}>Description:</Form.Label>
                     <Form.Control type="text" placeholder="enter description" onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
-                {/* add group photo */}
                 <CloudinaryUpload
                  preset="j3rw41kn"
                  buttonText="Upload Group Profile Picture"

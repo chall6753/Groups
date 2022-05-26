@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {Carousel} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
-
 
 function SlideShow(){
     const group_id = useParams().id
@@ -14,12 +12,9 @@ function SlideShow(){
         .then(res=> setPics(res))
     },[])
 
-    return(
-        
+    return( 
         <Carousel id = 'slideShow' >
-
             {pics.map((pic)=>{
-                console.log(pic)
                 return (
                     <Carousel.Item key={pic.id}>
                         <img
@@ -30,13 +25,8 @@ function SlideShow(){
                         />
                     </Carousel.Item>
                 )
-
             })}
-            
-            
-            
         </Carousel>
-
     )
 }
 

@@ -3,9 +3,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {Container, Form, Button} from 'react-bootstrap'
 
-
-
-
 function Signup(){
     const [firstName,setFirstName] = useState('')
     const [lastName,setLastName] = useState('')
@@ -13,12 +10,10 @@ function Signup(){
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [email, setEmail] = useState('')
-
     const navigate = useNavigate()
-
     const dispatch =  useDispatch()
     const currentUser = useSelector(state => state.currentUser)
-    console.log(currentUser)
+    
     function handleLogin(e){
         e.preventDefault();
         fetch('/api/signup',{
@@ -85,22 +80,6 @@ function Signup(){
                     Submit
                 </Button>
             </Form>
-            {/* <form>
-                <title>Signup</title>
-                <label>First name:</label>
-                <input type='text' onChange={(e) => setFirstName(e.target.value)}></input>
-                <label>Last name:</label>
-                <input type='text' onChange={(e) => setLastName(e.target.value)}></input>
-                <label>email:</label>
-                <input type='email' onChange={(e) => setEmail(e.target.value)}></input>
-                <label>username:</label>
-                <input type='text' onChange={(e) => setUsername(e.target.value)}></input>
-                <label>password:</label>
-                <input type='password' onChange={(e) => setPassword(e.target.value)}></input>
-                <label>Confirm password:</label>
-                <input type='password' onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
-                <button type='submit' onClick={handleLogin}>signup</button>
-            </form> */}
         </Container>
     )
 }

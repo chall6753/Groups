@@ -1,26 +1,18 @@
-import React, {useState,useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-
+import React from 'react'
+import {useSelector} from 'react-redux'
 import HomeNotLoggedIn from './HomeNotLoggedIn'
 import HomeLoggedIn from './HomeLoggedIn'
 
-
 function Home(){
-    
     const currentUser = useSelector(state => state.session)
-    console.log(currentUser)
+
     if(currentUser.id == ''){
         return (
             <HomeNotLoggedIn/>
-            
         )
     }
      else{return (
-         <div>
              <HomeLoggedIn/>
-             
-         </div>
-     
      )}   
 }
 

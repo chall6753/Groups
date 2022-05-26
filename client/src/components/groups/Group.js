@@ -9,18 +9,13 @@ import CreateEvent from './../Events/CreateEvent'
 import EventCard from './../Events/EventCard'
 import SlideShow from "../Pictures/SlideShow";
 
-
-
-function Group(){
-    
+function Group(){ 
     const dispatch = useDispatch()
     const group_id = useParams().id
     const navigate = useNavigate()
     const group = useSelector(state => state.groups.find((group)=>group.id == group_id))
     const groupEvents = useSelector(state => state.events.filter((event)=>event.group_id == group_id)).slice(0,3)
     const chats = useSelector(state => state.chats).filter((chat)=> chat.group?.id == group_id && chat.event?.id == null)
-
-    console.log(groupEvents)
 
     function leaveGroup(){
         fetch('/api/leave_group',{
@@ -54,8 +49,6 @@ function Group(){
                 <h1 onClick={()=>navigate(`/group_events/${group_id}`)} style={{cursor: 'pointer'}}>Events</h1>
                 {groupEvents.map(event=><EventCard event={event}/>)}
             </Card>  
-            
-            
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)'}} >
                 <h1 onClick={()=>navigate(`/group_chats/${group_id}`)} style={{cursor: 'pointer'}}>Chats</h1>
                 <GroupChats chats={chats}/>
@@ -67,9 +60,7 @@ function Group(){
             <Card style={{margin:'10px', background: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center'}}>
                 <h1>Group Members</h1>
                 {group.members.map((member)=> <Card style={{width: '200px', margin: '5px', fontWeight: 'bold'}}>{member.username}</Card>)}
-            </Card>
-            
-            
+            </Card> 
         </Container>
         )
     }

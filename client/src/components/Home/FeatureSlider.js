@@ -1,7 +1,5 @@
 import React from 'react'
 import {Carousel} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
-
 
 function FeatureSlider(){
 
@@ -14,7 +12,6 @@ function FeatureSlider(){
                 width="100"
                 height="300"
                 alt="First slide"
-                
                 />
                 <Carousel.Caption>
                 <h3 style={{size: "large"}}>Create a Group For Your Vacation</h3>
@@ -29,7 +26,6 @@ function FeatureSlider(){
                 height="300"
                 alt="Second slide"
                 />
-
                 <Carousel.Caption>
                 <h1 style={{size: "large"}}>Chat With Group Members</h1>
                 <p style={{fontWeight: 'bold'}}>Let your friends or family know what you are doing.</p>
@@ -43,14 +39,12 @@ function FeatureSlider(){
                 height="300"
                 alt="Third slide"
                 />
-
                 <Carousel.Caption>
                 <h3 style={{size: "large"}}>Upload Fun Vacation Pictures</h3>
                 <p style={{fontWeight: 'bold'}}>Take a photo and the memories will last a lifetime.</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
-
     )
 }
 

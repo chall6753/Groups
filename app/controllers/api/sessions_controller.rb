@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
         if user
             render json: user
         else
-            render json: {error: 'not logged in'}, status: :not_found
+            render json: {error: 'not logged in'}, status: :unauthorized
         end
     end
 

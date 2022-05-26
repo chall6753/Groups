@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Container, Card, Button} from 'react-bootstrap'
 import {useParams, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
@@ -16,11 +16,8 @@ function Event(){
         dispatch(showEvent(eventId))
     },[])
     
-    
-
     if(event != undefined){
         const startDate = new Date(event.start_date)
-        console.log(event)
        return (
         <Container>
             <Button onClick={()=>navigate(`/groups/${event.group.id}`)} style={{margin: '5px'}}>Back to Group</Button>
@@ -30,7 +27,6 @@ function Event(){
                 <Card.Text>Date: {startDate.toLocaleDateString()}</Card.Text> 
                 <Card.Text>Time: {startDate.toLocaleTimeString()}</Card.Text> 
                 <Card.Text>Location: {event.location}</Card.Text> 
-                
                 <Card.Text>Descritpion: {event.description}</Card.Text> 
                 </Card.Body>
             </Card>
