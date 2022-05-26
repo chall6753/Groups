@@ -24,7 +24,7 @@ export const createGroup = (name, location, description, startDate, endDate, pas
             res.json().then(group => dispatch({type: 'createGroup', payload: group}))
             navigate('/group_list')
         }
-        else {console.log('error')}
+        else res.json().then(res=> window.alert(res))
     })      
    
     

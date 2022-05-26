@@ -12,6 +12,11 @@ class Api::PicturesController < ApplicationController
         pics = Group.find(params[:id]).pictures
         render json: pics
     end
+
+    def destroy 
+        pic = Picture.find_by(id: params[:id])
+        pic.destroy()
+    end
     private 
 
     def upload_picture_params

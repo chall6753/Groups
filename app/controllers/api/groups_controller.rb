@@ -26,7 +26,7 @@ class Api::GroupsController < ApplicationController
       @group.user_groups.create(user_id: current_user.id)
       render json: @group, status: :created
     else
-      render json: @group.errors, status: :unprocessable_entity
+      render json: @group.errors.full_messages, status: :unprocessable_entity
     end
   end
 

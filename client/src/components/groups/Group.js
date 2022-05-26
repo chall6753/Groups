@@ -28,10 +28,10 @@ function Group(){
         .then(res=> {if (res.ok){
             dispatch(showGroups())
             dispatch(showChats())
-            navigate('/')
-        }})
+            
+        }}).then(()=>navigate('/'))
     } 
-    
+    console.log(chats)
     if (group != undefined){
         let startDate = new Date(group.start_date)
         let endDate = new Date(group.end_date)

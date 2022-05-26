@@ -17,6 +17,7 @@ function GroupCard({group}){
                 <label>password:</label>
                 <input type='password' onChange={(e) => setPassword(e.target.value)}></input>
                 <Button onClick={()=>handleJoinGroup()}>join</Button>
+                <Button onClick={()=>setShowJoinForm(false)} style={{margin: '5px'}}>cancel</Button>
             </form>
         )
     }

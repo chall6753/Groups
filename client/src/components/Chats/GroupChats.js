@@ -13,7 +13,7 @@ function GroupChats({chats}){
         <Container>
             <div>
                 {groupChats.map(chat=> {
-                    return <ChatCard chat={chat} />
+                    return <ChatCard key={chat.id} chat={chat} />
                 })}
             </div>
         </Container>

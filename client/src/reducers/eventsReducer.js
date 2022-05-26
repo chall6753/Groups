@@ -18,7 +18,7 @@ export const createEvent = (name, location, description, startDate, endDate, gro
               res.json().then(event => dispatch({type: 'createEvent', payload: event}))
               navigate(`/group_events/${group_id}`)
           }
-          else {console.log('error')}
+          else res.json().then(res=> console.log(res))
       })      
     }   
   }

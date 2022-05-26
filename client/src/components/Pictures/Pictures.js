@@ -32,6 +32,18 @@ function Pictures(){
         })
     }
 
+    const handleDelete = (pic_id)=>{
+      fetch(`/api/pictures/${pic_id}`, {
+        method: 'DELETE'
+      })
+      .then((res)=>{
+        if (res.ok){
+          setPics(pics.filter((pic)=> pic.id != pic_id))
+        }
+      })
+      
+    }
+
     return(
         <div>
           <CloudinaryUpload
@@ -40,7 +52,7 @@ function Pictures(){
                  handleUpload={handleUpload}
           />
           <Container id='groupContainer'>
-              {pics?pics.map((pic)=> <Thumbnail key={pic.id} pic={pic}/>):null}
+              {pics?pics.map((pic)=> <Thumbnail handleDelete={handleDelete}key={pic.id} pic={pic}/>):null}
           </Container>
         </div>
     )
