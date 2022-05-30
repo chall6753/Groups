@@ -5,7 +5,7 @@ import CloudinaryUpload from "./CloudinaryUpload";
 import Thumbnail from "./Thumbnail"
 
 function Pictures(){
-    debugger
+   
     const group_id = useParams().id
     const [pics, setPics] = useState('')
    
