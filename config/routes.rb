@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     patch '/leave_group', to: "users#leave_group"
   end
  
-    # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+    get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 
 end
