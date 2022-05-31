@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  byebug
 
   namespace :api do
     get '/uploads/prepare'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post "/users/join_group", to: "users#join_group"
     patch '/leave_group', to: "users#leave_group"
   end
- 
+    
     get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 
